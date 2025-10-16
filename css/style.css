@@ -410,3 +410,11 @@ p {
         text-align: center;
     }
 }
+
+.catalog-img {
+                width: 200px;
+                height: 200px;
+                object-fit: cover;
+                display: block;
+                margin: 0 auto;
+            }
