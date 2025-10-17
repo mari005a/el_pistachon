@@ -12,7 +12,7 @@ if (!isset($_SESSION['id']) || $_SESSION['rol'] !== 'admin') {
 <head>
   <meta charset="UTF-8">
   <title>Panel de Administrador</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
@@ -21,11 +21,11 @@ if (!isset($_SESSION['id']) || $_SESSION['rol'] !== 'admin') {
       <a href="#" class="logo">Mi Web</a>
       <input type="checkbox" id="menu" />
       <label for="menu">
-        <img src="imagenes/menu.png" class="menu-icono" alt="menu">
+        <img src="../imagenes/menu.png" class="menu-icono" alt="menu">
       </label>
       <nav class="navbar">
         <ul>
-          <li><a href="index.html">Inicio</a></li>
+          <li><a href="../html/index.html">Inicio</a></li>
           <li><a href="logout.php">Cerrar sesión</a></li>
         </ul>
       </nav>

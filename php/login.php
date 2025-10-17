@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Login</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
@@ -16,7 +16,7 @@
       </label>
       <nav class="navbar">
         <ul>
-          <li><a href="index.html">Inicio</a></li>
+          <li><a href="../html/index.html">Inicio</a></li>
           <li><a href="login.php">Login</a></li>
           <li><a href="register.php">Registro</a></li>
         </ul>

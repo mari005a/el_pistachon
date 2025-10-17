@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             if ($_SESSION['rol'] == 'admin') {
                 header("Location: admin.php");
             } else {
-                header("Location: index.html");
+                header("Location: ../html/catalogo.html");
             }
             exit;
         } else {
