@@ -419,7 +419,6 @@ p {
                 margin: 0 auto;
             }
 
-/* --- Sección de búsqueda con menú desplegable --- */
 .search-section {
     display: flex;
     justify-content: center;
@@ -436,10 +435,9 @@ p {
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* Menú desplegable de categorías */
 .category-select {
     padding: 10px 15px;
-    border: 1px solid #ccc;
+    border: 1px solid #3eb43a;
     border-radius: 25px;
     font-size: 15px;
     outline: none;
@@ -453,7 +451,6 @@ p {
     border-color: #3eb43a;
 }
 
-/* Input de búsqueda */
 .search-input {
     width: 300px;
     padding: 10px 15px;
