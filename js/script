@@ -1,0 +1,27 @@
+
+const imagenes = document.querySelectorAll(".catalog-img");
+const lightbox = document.getElementById("lightbox");
+const imagenAmpliada = document.getElementById("imagen-ampliada");
+const cerrar = document.getElementById("cerrar");
+
+imagenes.forEach(img => {
+  img.addEventListener("click", () => {
+    imagenAmpliada.src = img.src;
+    lightbox.classList.remove("oculto");
+    lightbox.style.display = "flex";
+  });
+});
+
+cerrar.addEventListener("click", () => {
+  lightbox.classList.add("oculto");
+  lightbox.style.display = "none";
+});
+
+lightbox.addEventListener("click", e => {
+  if (e.target === lightbox) {
+    lightbox.classList.add("oculto");
+    lightbox.style.display = "none";
+  }
+});
+
+
