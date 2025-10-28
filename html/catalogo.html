@@ -44,6 +44,25 @@
 
     </header>
 
+   <section class="search-section">
+    <div class="search-container">
+        <select class="category-select">
+            <option value="">Todas las categorías</option>
+            <option value="chiles">Chiles</option>
+            <option value="especias">Especias</option>
+            <option value="semillas">Semillas</option>
+            <option value="dulces">Dulces</option>
+            <option value="frutas-secas">Frutas Secas</option>
+            <option value="otros">Otros</option>
+        </select>
+
+        <input type="text" placeholder="Buscar producto..." class="search-input">
+        <button class="search-button">
+            <img src="../imagenes/lupa.jpg" alt="Buscar" class="lupa-icono">
+        </button>
+    </div>
+   </section>
+
         
 
             <div class="catalog-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 32px;">
@@ -215,6 +234,7 @@
                         <span>Stock: 11 kg</span>
                     </div>
                 </div>
+                
                 <div>
                     <div class="catalog-info" style="background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.12); border-radius: 12px; padding: 12px; margin-top: 8px; padding-top: 25px;">
                     <img src="../imagenes/per_rompope.jpg" alt="Producto 22" class="catalog-img" style="padding-bottom: 20px;">
@@ -351,6 +371,13 @@
     </div>
 
 </footer>
+
+<div id="lightbox" class="oculto">
+  <span id="cerrar">&times;</span>
+  <img id="imagen-ampliada" src="" alt="Imagen ampliada">
+</div>
+
+<script src="../js/script"></script>
 </body>
 
 </html>
