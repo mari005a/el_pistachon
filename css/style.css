@@ -19,7 +19,7 @@ body {
 .header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.7),
             rgba(0, 0, 0, 0.7)),
-        url(../imagenes/bg.jpg);
+        url(../imagenes/adentro.jpg);
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
@@ -101,6 +101,7 @@ body {
     color: #fffdfc;
     text-transform: uppercase;
     font-weight: 500;
+    border-radius: 30px;
 }
 
 .btn-1:hover {
@@ -162,7 +163,7 @@ body {
 .services {
     background-image: linear-gradient(rgba(0, 0, 0, 0.7),
             rgba(0, 0, 0, 0.7)),
-        url(../imagenes/bg2.jpg);
+        url(../imagenes/dentro.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -418,6 +419,8 @@ p {
                 display: block;
                 margin: 0 auto;
             }
+
+        
 
 .search-section {
     display: flex;
