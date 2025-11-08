@@ -320,7 +320,7 @@ p {
 }
 
 .featured-image-2 {
-    background-image: url(../imagenes/chileguajillo.jpg);
+    background-image: url(../imagenes/chilecalifornia.webp);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -470,9 +470,13 @@ body:has(.header) .hero-content p {
 
 .social-container h3 {
     color: #323337;
-    font-size: 20px;
-    margin-bottom: 10px;
+    font-size: 24px;
+    margin-bottom: 20px;
     text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .social-links {
@@ -483,17 +487,31 @@ body:has(.header) .hero-content p {
 }
 
 .social-links a {
-    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    background: #f8f9fa;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: #323337; /* Mismo color que "Síguenos" */
+    font-size: 16px;
 }
 
 .social-links a:hover {
-    transform: scale(1.1);
+    transform: translateY(-2px);
+    background: #24c21f;
+    color: #fffdfc; /* Blanco cuando hace hover */
+    box-shadow: 0 4px 12px rgba(36, 194, 31, 0.3);
 }
 
 .social-links img {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
 }
 
 /* Responsividad para página Acerca de */
