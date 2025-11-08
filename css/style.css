@@ -583,6 +583,64 @@ body:has(.header) .hero-content p {
     }
 }
 
+/* ===== ESTILOS PARA INICIO DE SESIÓN ===== */
+.header-content {
+    text-align: center;
+    padding: 50px 15px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.header-content h1 {
+    font-size: 32px;
+    color: #f9fafc;
+    margin-bottom: 20px;
+}
+
+.header-content .msg span {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.header-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.header-content form input {
+    padding: 12px 15px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header-content form input:focus {
+    border-color: #3eb43a;
+    box-shadow: 0 0 5px rgba(83, 223, 40, 0.4);
+    outline: none;
+}
+
+.header-content form button {
+    padding: 12px 15px;
+    font-size: 14px;
+    background-color: #3eb43a;
+    color: #fffdfc;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.header-content form button:hover {
+    background-color: #2f992a;
+    transform: translateY(-2px);
+}
+
 /* === CATALOGO Y BUSCADOR === */
 .catalog-img {
   width: 200px;
