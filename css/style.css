@@ -401,6 +401,162 @@ p {
 
 /* ===== ESTILOS PARA OTRAS PÁGINAS ===== */
 
+/* ===== ESTILOS PARA PÁGINA ACERCA DE ===== */
+
+/* Header específico para página Acerca de */
+body:has(.header) .header {
+    min-height: 40vh; /* Más pequeño que el de inicio */
+}
+
+body:has(.header) .hero-content {
+    padding: 60px 15px 40px 15px; /* Menos padding vertical */
+}
+
+body:has(.header) .hero-content h1 {
+    font-size: 45px; /* Título más pequeño */
+    line-height: 50px;
+    margin-bottom: 20px;
+}
+
+body:has(.header) .hero-content p {
+    font-size: 14px; /* Texto más pequeño */
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Contenedor del mapa y redes sociales */
+.map-social-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    margin: 40px auto;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+/* Mapa */
+.map-container {
+    flex: 2;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 350px;
+    border: 0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Redes sociales */
+.social-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 100px 0 0;
+    gap: 15px;
+}
+
+.social-container h3 {
+    color: #323337;
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.social-links a {
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: scale(1.1);
+}
+
+.social-links img {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+}
+
+/* Responsividad para página Acerca de */
+@media (max-width: 1024px) {
+    .map-social-container {
+        gap: 30px;
+        padding: 0 15px;
+    }
+    
+    .social-container {
+        padding-right: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    body:has(.header) .header {
+        min-height: 35vh;
+    }
+    
+    body:has(.header) .hero-content h1 {
+        font-size: 35px;
+        line-height: 40px;
+    }
+    
+    .map-social-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .map-container,
+    .social-container {
+        flex: none;
+        width: 100%;
+    }
+    
+    .social-container {
+        padding: 0;
+        align-items: center;
+    }
+    
+    .social-links {
+        flex-direction: row;
+        justify-content: center;
+        gap: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    body:has(.header) .header {
+        min-height: 30vh;
+    }
+    
+    body:has(.header) .hero-content h1 {
+        font-size: 28px;
+        line-height: 32px;
+    }
+    
+    .map-container iframe {
+        height: 300px;
+    }
+    
+    .social-links {
+        gap: 20px;
+    }
+    
+    .social-links img {
+        width: 35px;
+        height: 35px;
+    }
+}
+
 /* === CATALOGO Y BUSCADOR === */
 .catalog-img {
   width: 200px;
