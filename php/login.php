@@ -10,14 +10,11 @@
 
 <body style="margin:0; font-family:'Poppins', sans-serif; background-color:#fafafa; display:flex; flex-direction:column; min-height:100vh;">
 
-  <!-- HEADER -->
   <header style="background-color:#f5f5f5; padding:10px 0; border-bottom:1px solid #ccc;">
     <div style="display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; padding:0 40px;">
       
-      <!-- Logo a la izquierda -->
       <a href="index.html" style="font-size:22px; font-weight:600; text-decoration:none; color:#333;">Logo</a>
 
-      <!-- Menú a la derecha -->
       <nav>
         <ul style="list-style:none; display:flex; gap:40px; margin:0; padding:0;">
           <li><a href="../index.html" style="text-decoration:none; color:#333; font-weight:500;">Inicio</a></li>
@@ -30,7 +27,6 @@
     </div>
   </header>
 
-  <!-- CONTENIDO PRINCIPAL -->
   <main style="flex:1; display:flex; justify-content:center; align-items:center;">
     <div style="width:100%; max-width:500px; background:#fff; padding:50px; border-radius:10px; box-shadow:0 3px 8px rgba(0,0,0,0.1); text-align:center;">
       <h1 style="margin-bottom:25px;">Iniciar sesión</h1>
