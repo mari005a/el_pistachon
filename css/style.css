@@ -311,8 +311,16 @@ p {
     margin-top: 10px;
 }
 
-.featured-image-1, .featured-image-2 {
-    background-image: url(../imagenes/no_image.png);
+.featured-image-1 {
+    background-image: url(../imagenes/pistaches.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+}
+
+.featured-image-2 {
+    background-image: url(../imagenes/chileguajillo.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
