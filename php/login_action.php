@@ -2,27 +2,30 @@
 session_start();
 include 'conexion.php';
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $email = trim($_POST['email']);
-    $password = $_POST['password'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
 
-    $stmt = $conn->prepare("SELECT id, nombre, password, rol FROM usuarios WHERE email = ?");
+    // Buscar usuario en BD usando email
+    $sql = "SELECT id, nombre, rol, password FROM usuarios WHERE email = ?";
+    $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();
-    $resultado = $stmt->get_result();
+    $result = $stmt->get_result();
 
-    if ($resultado->num_rows == 1) {
-        $usuario = $resultado->fetch_assoc();
+    if ($row = $result->fetch_assoc()) {
+        // Verificar contraseña
+        if (password_verify($password, $row['password'])) {
+            // Guardar variables de sesión
+            $_SESSION['id'] = $row['id'];
+            $_SESSION['nombre'] = $row['nombre'];
+            $_SESSION['rol'] = $row['rol'];
 
-        if (password_verify($password, $usuario['password'])) {
-            $_SESSION['id'] = $usuario['id'];
-            $_SESSION['nombre'] = $usuario['nombre'];
-            $_SESSION['rol'] = $usuario['rol'];
-
-            if ($_SESSION['rol'] == 'admin') {
+            // Redirigir según rol
+            if ($row['rol'] === 'admin') {
                 header("Location: admin.php");
             } else {
-                header("Location: ../html/catalogo.html");
+                header("Location: catalogo.php");
             }
             exit;
         } else {

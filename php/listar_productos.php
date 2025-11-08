@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start(); 
 include 'conexion.php';
 
 // Verificar que el usuario sea admin
@@ -68,7 +68,7 @@ $result = $conn->query("SELECT * FROM productos ORDER BY id DESC");
 </head>
 <body>
 
-<header class="header-admin">
+<header class="header">
   <div class="menu container">
     <a href="admin.php" class="logo">Panel Admin</a>
     <nav class="navbar">

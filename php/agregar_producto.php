@@ -1,10 +1,10 @@
 <?php
-session_start();
+session_start(); 
 include 'conexion.php';
 
-// Verificar que el usuario sea administrador
-if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'admin') {
-    header("Location: login.php");
+// Verificar que el usuario sea admin
+if (!isset($_SESSION['id']) || $_SESSION['rol'] !== 'admin') {
+    header("Location: login.php?msg=error_user");
     exit;
 }
 
@@ -48,16 +48,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 
-<header class="header-admin">
+<header class="header">
   <div class="menu container">
-    <a href="index.php" class="logo">Logo</a>
+    <a href="admin.php" class="logo">Panel Admin</a>
     <nav class="navbar">
       <ul>
-        <li><a href="catalogo.php">Catálogo</a></li>
-        <?php if ($_SESSION['rol'] === 'admin'): ?>
-          <li><a href="agregar_producto.php">Agregar Producto</a></li>
-        <?php endif; ?>
-        <li><a href="logout.php">Cerrar Sesión</a></li>
+        <li><a href="agregar_producto.php">Agregar Producto</a></li>
+        <li><a href="listar_productos.php">Gestionar Productos</a></li>
+        <li><a href="logout.php">Cerrar sesión</a></li>
       </ul>
     </nav>
   </div>

@@ -40,7 +40,7 @@ $result = $stmt->get_result();
 </head>
 <body>
 
-    <header class="header-admin">
+    <header class="header">
 
         <div class="menu container">
             <a href="index.html" class="logo">Logo</a> <!--Insertar imagen para el logo-->

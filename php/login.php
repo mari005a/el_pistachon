@@ -37,10 +37,10 @@
         </div>
       <?php endif; ?>
 
-      <form action="login_action.php" method="POST" style="max-width:400px; margin:0 auto; text-align:left;">
-        <input type="email" name="email" placeholder="Correo electrónico" required style="width:100%; padding:10px; margin:10px 0;">
-        <input type="password" name="password" placeholder="Contraseña" required style="width:100%; padding:10px; margin:10px 0;">
-        <button type="submit" class="btn-1" style="width:100%; margin-top:15px;">Entrar</button>
+      <form action="login_action.php" method="POST">
+        <input type="text" name="email" placeholder="Correo electrónico" required>
+        <input type="password" name="password" placeholder="Contraseña" required>
+        <button type="submit">Iniciar sesión</button>
       </form>
     </div>
   </header>

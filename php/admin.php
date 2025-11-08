@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start();          
 include 'conexion.php';
 
 // Verificar que el usuario sea admin
@@ -46,7 +46,7 @@ $totalStock = $conn->query("SELECT SUM(stock) AS total FROM productos")->fetch_a
 </head>
 <body>
 
-<header class="header-admin">
+<header class="header">
   <div class="menu container">
     <a href="admin.php" class="logo">Panel Admin</a>
     <nav class="navbar">
