@@ -20,7 +20,7 @@
           <li><a href="../html/index.html" style="text-decoration:none; color:#333; font-weight:500;">Inicio</a></li>
           <li><a href="php/catalogo.php" style="text-decoration:none; color:#333; font-weight:500;">Catálogo</a></li>
           <li><a href="../html/acerca_de.html" style="text-decoration:none; color:#333; font-weight:500;">Acerca de</a></li>
-          <li><a href="login.php" style="text-decoration:none; color:#333; font-weight:500;">Login</a></li>
+          <li><a href="login.php" style="text-decoration:none; color:#333; font-weight:500;">Iniciar Sesión</a></li>
         </ul>
       </nav>
 
