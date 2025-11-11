@@ -42,18 +42,18 @@ $result = $stmt->get_result();
 
     <header class="header">
 
-        <div class="menu container">
+        <div class="nav-container container">
             <a href="index.html" class="logo">Logo</a> <!--Insertar imagen para el logo-->
-            <input type="checkbox" id="menu">
+            <input type="checkbox" id="menu-toggle">
             <label for="menu">
-                <img src="../imagenes/menu_ico.png" class="menu-icono" alt="">
+                <img src="../imagenes/menu_ico.png" class="menu-icon" alt="Menú">
             </label>
 
             <nav class="navbar">
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="catalogo.html">Catálogo</a></li>
-                    <li><a href="acerca_de.html">Acerca de</a></li>
+                    <li><a href="../html/index.html">Inicio</a></li>
+                    <li><a href="catalogo.php">Catálogo</a></li>
+                    <li><a href="../html/acerca_de.html">Acerca de</a></li>
                     <li><a href="login.php">Inicio de Sesión</a></li>
 
                 </ul>
@@ -61,7 +61,7 @@ $result = $stmt->get_result();
 
         </div>
 
-        <div class="header-content container">
+        <div class="hero-content container">
 
             <h1>Catálogo</h1>
             <p>
@@ -69,7 +69,6 @@ $result = $stmt->get_result();
                 En este sitio web encontrarás todo lo que necesitas saber sobre nuestros productos: desde los distintos tipos de chiles que ofrecemos, hasta productos percederos. 
                 También te invitamos a conocer la historia que dio origen a este proyecto. ¡Gracias por visitarnos!
             </p>
-            <a href="acerca_de.html" class="btn-1">INFORMACIÓN</a>
         </div>
 
     </header>
@@ -88,7 +87,7 @@ $result = $stmt->get_result();
       </select>
       <input type="text" name="buscar" placeholder="Buscar producto..." class="search-input">
       <button type="submit" class="search-button">
-        <img src="../imagenes/lupa.jpg" alt="Buscar" class="lupa-icono">
+        <img src="../imagenes/quelepasaalupita.jpg" alt="Buscar" class="lupa-icono">
       </button>
     </form>
   </div>
