@@ -75,8 +75,8 @@ $result = $stmt->get_result();
 
 <section class="search-section">
   <div class="search-container">
-    <form method="GET" action="catalogo.php">
-      <select name="categoria" class="category-select">
+    <form method="GET" action="catalogo.php" style="display:flex; flex-wrap:wrap; align-items:center; gap:8px;">
+      <select name="categoria" class="category-select" style="padding:8px;">
         <option value="">Todas las categorías</option>
         <option value="chiles">Chiles</option>
         <option value="especias">Especias</option>
@@ -85,9 +85,11 @@ $result = $stmt->get_result();
         <option value="frutas-secas">Frutas Secas</option>
         <option value="otros">Otros</option>
       </select>
-      <input type="text" name="buscar" placeholder="Buscar producto..." class="search-input">
-      <button type="submit" class="search-button">
-        <img src="../imagenes/quelepasaalupita.jpg" alt="Buscar" class="lupa-icono">
+
+      <input type="text" name="buscar" placeholder="Buscar producto..." class="search-input" style="padding:8px; flex:1; min-width:180px;">
+
+      <button type="submit" class="search-button" style="padding:8px 10px; display:inline-flex; align-items:center; justify-content:center;">
+        <img src="../imagenes/quelepasaalupita.png" alt="Buscar" class="lupa-icono" style="width:20px; height:20px;">
       </button>
     </form>
   </div>
