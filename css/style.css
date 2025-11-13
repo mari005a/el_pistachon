@@ -75,6 +75,7 @@ p {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 20px 15px;
     z-index: 1000;
+    gap: 30px; /* Espacio entre logo y navegación */
 }
 
 .logo {
@@ -83,8 +84,37 @@ p {
     font-weight: 800;
 }
 
+/* Logo más grande */
+.logo-img {
+    height: 60px; /* Aumentado de 40px a 60px */
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+/* Checkbox oculto pero funcional */
+#menu-toggle {
+    display: none;
+}
+
+/* Icono del menú blanco */
+.menu-icon {
+    width: 25px;
+    filter: brightness(0) invert(1); /* Asegura que sea blanco */
+}
+
+/* Label del menú - oculto por defecto, se muestra en responsive */
+.nav-container label {
+    cursor: pointer;
+    display: none;
+}
+
 .navbar ul {
     display: flex;
+    gap: 10px; /* Espacio entre elementos de navegación */
 }
 
 .navbar ul li {
@@ -104,24 +134,11 @@ p {
     color: #24c21f;
 }
 
-#menu-toggle {
-    display: none;
-}
-
-.menu-icon {
-    width: 25px;
-    filter: invert(1);
-}
-
-.nav-container label {
-    cursor: pointer;
-    display: none;
-}
-
 .hero-content {
     text-align: center;
     width: 100%;
     padding: 0 15px;
+    margin-top: 40px; /* Separa el título del menú de navegación */
 }
 
 .hero-content h1 {
@@ -783,16 +800,26 @@ body:has(.header) .hero-content p {
         max-width: 180px;
         height: 180px;
     }
+    
+    .logo-img {
+        height: 55px; /* Logo ligeramente más pequeño en tablets */
+    }
 }
 
 /* === TABLETS PEQUEÑAS (768px) === */
 @media (max-width: 768px) {
     .nav-container {
         padding: 15px;
+        gap: 15px;
     }
     
+    /* MOSTRAR EL ICONO DEL MENÚ EN MÓVIL */
     .nav-container label {
-        display: initial;
+        display: initial; /* Esto muestra el icono en móvil */
+    }
+    
+    .logo-img {
+        height: 50px; /* Logo más pequeño en tablets */
     }
     
     .navbar {
@@ -807,6 +834,7 @@ body:has(.header) .hero-content p {
     
     .navbar ul {
         flex-direction: column;
+        gap: 0;
     }
     
     .navbar ul li {
@@ -828,6 +856,7 @@ body:has(.header) .hero-content p {
     
     .hero-content {
         padding: 80px 15px;
+        margin-top: 30px; /* Menos margen en tablets */
     }
     
     .hero-content h1 {
@@ -1007,6 +1036,14 @@ body:has(.header) .hero-content p {
         left: -50px; /* Más a la izquierda en móviles */
     }
     
+    .logo-img {
+        height: 45px; /* Logo más pequeño en móviles */
+    }
+    
+    .hero-content {
+        margin-top: 20px; /* Menos margen en móviles */
+    }
+    
     /* Catálogo y buscador para móviles */
     .catalog-grid {
         grid-template-columns: 1fr !important;
@@ -1068,5 +1105,13 @@ body:has(.header) .hero-content p {
         width: 120px;
         height: 65px;
         left: -40px; /* Más a la izquierda en móviles pequeños */
+    }
+    
+    .logo-img {
+        height: 40px; /* Logo más pequeño en móviles pequeños */
+    }
+    
+    .hero-content {
+        margin-top: 15px; /* Menos margen en móviles pequeños */
     }
 }
