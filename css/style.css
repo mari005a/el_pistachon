@@ -54,7 +54,7 @@ p {
 
 /* ===== HEADER Y NAVEGACIÓN ===== */
 .header {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url(../imagenes/adentro.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../imagenes/adentro.jpg);
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
@@ -155,7 +155,8 @@ p {
 }
 
 .btn-primary {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
+    margin-top: 1px;
 }
 
 /* ===== SECCIÓN PRODUCTOS ===== */
@@ -311,6 +312,7 @@ p {
 .featured-section {
     display: flex;
     flex-wrap: wrap;
+    position: relative; /* ← IMPORTANTE PARA QUE LAS FLECHAS SE POSICIONEN BIEN */
 }
 
 .featured-content {
@@ -332,21 +334,41 @@ p {
     margin-top: 10px;
 }
 
-.featured-image-1 {
-    background-image: url(../imagenes/pistaches.jpg);
+/* Imagen para los carruseles */
+.featured-image {
+    width: 50%;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 50%;
 }
 
-.featured-image-2 {
-    background-image: url(../imagenes/chilecalifornia.webp);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 50%;
+/* IMÁGENES INICIALES */
+#image-1 {
+    background-image: url('../imagenes/pistaches.jpg');
 }
+
+#image-2 {
+    background-image: url('../imagenes/chilecalifornia.webp');
+}
+
+/* Flechas del carrusel */
+.flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.55);
+    color: white;
+    border: none;
+    font-size: 30px;
+    padding: 6px 14px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 8px;
+}
+
+.flecha-der { right: 10px; }
+.flecha-izq { left: 10px; }
+
 
 /* ===== SECCIÓN PRODUCTOS TEMPORADA ===== */
 .seasonal-products {
