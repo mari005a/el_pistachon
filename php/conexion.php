@@ -1,5 +1,5 @@
 <?php
-$servername = "140.10.4.105";   // o la IP de tu servidor
+$servername = "140.10.1.234";   // o la IP de tu servidor
 $username   = "root";        // tu usuario de MariaDB
 $password   = "mariana";            // tu contraseña de MariaDB
 $dbname     = "tienda_db";   // la base de datos que creamos

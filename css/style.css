@@ -58,7 +58,7 @@ p {
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 70vh;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     position: relative;
@@ -78,21 +78,16 @@ p {
     gap: 30px; /* Espacio entre logo y navegación */
 }
 
-.logo {
-    color: #fffdfc;
-    font-size: 25px;
-    font-weight: 800;
-}
-
-/* Logo más grande */
 .logo-img {
-    height: 60px; /* Aumentado de 40px a 60px */
+    height: 150px;  /* Aumenté el tamaño */
     width: auto;
+    max-width: 200px; /* Límite máximo */
     transition: transform 0.3s ease;
+    display: block; /* Para mejor control */
 }
 
 .logo-img:hover {
-    transform: scale(1.05);
+    transform: scale(1.1); /* Efecto hover más notable */
 }
 
 /* Checkbox oculto pero funcional */
@@ -147,6 +142,7 @@ p {
     color: #f9fafc;
     text-transform: uppercase;
     margin-bottom: 25px;
+    margin-top: 50px;
 }
 
 .hero-content p {
