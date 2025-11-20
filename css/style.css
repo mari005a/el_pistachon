@@ -1143,7 +1143,7 @@ body:has(.header) .hero-content p {
     }
 }
 
-/* ===== ESTILOS PARA PANEL DE ADMINISTRADOR ===== */
+/* ===== ESTILOS PARA FORMULARIOS DE ADMINISTRADOR ===== */
 .admin-section {
     padding: 80px 0;
     background-color: #f8f9fa;
@@ -1234,6 +1234,19 @@ body:has(.header) .hero-content p {
     border-radius: 8px;
     margin-bottom: 20px;
     text-align: center;
+}
+
+.current-image {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.current-image img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid #e1e2e6;
 }
 
 /* Header específico para admin */

@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label>Descripción:</label>
             <textarea name="descripcion" required placeholder="Describe el producto"></textarea>
 
-            <label>Stock (kg):</label>
+            <label>Stock (kg/unidades):</label>
             <input type="number" name="stock" min="0" step="0.1" required placeholder="0.0">
 
             <label>Categoría:</label>

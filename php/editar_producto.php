@@ -92,47 +92,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </header>
 
-<section class="container" style="padding:40px;">
-  <h2>Editar Producto</h2>
-  <?php if (!empty($mensaje)): ?>
-    <p style="color:red;"><?php echo htmlspecialchars($mensaje); ?></p>
-  <?php endif; ?>
+    <section class="admin-section">
+    <div class="admin-form container">
+        <h2>Editar Producto</h2>
+        
+        <?php if (!empty($mensaje)): ?>
+            <div class="msg-error"><?php echo htmlspecialchars($mensaje); ?></div>
+        <?php endif; ?>
 
-  <form method="POST" enctype="multipart/form-data" style="display:flex; flex-direction:column; gap:15px; max-width:400px;">
-    <label>Nombre:
-      <input type="text" name="nombre" value="<?php echo htmlspecialchars($producto['nombre']); ?>" required>
-    </label>
+        <form method="POST" enctype="multipart/form-data">
+            <label>Nombre del Producto:</label>
+            <input type="text" name="nombre" value="<?php echo htmlspecialchars($producto['nombre']); ?>" required placeholder="Ingresa el nombre del producto">
 
-    <label>Descripción:
-      <textarea name="descripcion" rows="3" required><?php echo htmlspecialchars($producto['descripcion']); ?></textarea>
-    </label>
+            <label>Descripción:</label>
+            <textarea name="descripcion" rows="3" required placeholder="Describe el producto"><?php echo htmlspecialchars($producto['descripcion']); ?></textarea>
 
-    <label>Stock (kg):
-      <input type="number" name="stock" min="0" step="0.1" value="<?php echo htmlspecialchars($producto['stock']); ?>" required>
-    </label>
+            <label>Stock (kg/unidades):</label>
+            <input type="number" name="stock" min="0" step="0.1" value="<?php echo htmlspecialchars($producto['stock']); ?>" required placeholder="0.0">
 
-    <label>Categoría:
-      <select name="categoria" required>
-        <option value="chiles" <?php if($producto['categoria']=='chiles') echo 'selected'; ?>>Chiles</option>
-        <option value="especias" <?php if($producto['categoria']=='especias') echo 'selected'; ?>>Especias</option>
-        <option value="semillas" <?php if($producto['categoria']=='semillas') echo 'selected'; ?>>Semillas</option>
-        <option value="dulces" <?php if($producto['categoria']=='dulces') echo 'selected'; ?>>Dulces</option>
-        <option value="frutas-secas" <?php if($producto['categoria']=='frutas-secas') echo 'selected'; ?>>Frutas Secas</option>
-        <option value="otros" <?php if($producto['categoria']=='otros') echo 'selected'; ?>>Otros</option>
-      </select>
-    </label>
+            <label>Categoría:</label>
+            <select name="categoria" required>
+                <option value="">Selecciona una categoría</option>
+                <option value="chiles" <?php if($producto['categoria']=='chiles') echo 'selected'; ?>>Chiles</option>
+                <option value="especias" <?php if($producto['categoria']=='especias') echo 'selected'; ?>>Especias</option>
+                <option value="semillas" <?php if($producto['categoria']=='semillas') echo 'selected'; ?>>Semillas</option>
+                <option value="dulces" <?php if($producto['categoria']=='dulces') echo 'selected'; ?>>Dulces</option>
+                <option value="frutas-secas" <?php if($producto['categoria']=='frutas-secas') echo 'selected'; ?>>Frutas Secas</option>
+                <option value="otros" <?php if($producto['categoria']=='otros') echo 'selected'; ?>>Otros</option>
+            </select>
 
-    <label>Imagen actual:
-      <img src="../imagenes/<?php echo htmlspecialchars($producto['foto']); ?>" alt="" style="width:100px; height:100px; object-fit:cover;">
-    </label>
+            <div class="current-image">
+                <label>Imagen Actual:</label>
+                <img src="../imagenes/<?php echo htmlspecialchars($producto['foto']); ?>" alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
+            </div>
 
-    <label>Nueva imagen (opcional):
-      <input type="file" name="foto" accept="image/*">
-    </label>
+            <label>Nueva Imagen (opcional):</label>
+            <input type="file" name="foto" accept="image/*">
 
-    <button type="submit" class="btn-1">Actualizar Producto</button>
-  </form>
+            <button type="submit" class="btn-admin">Actualizar Producto</button>
+        </form>
+    </div>
 </section>
-
 </body>
 </html>
