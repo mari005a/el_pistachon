@@ -43,7 +43,9 @@ $result = $stmt->get_result();
     <header class="header">
 
         <div class="nav-container container">
-            <a href="index.html" class="logo">Logo</a> <!--Insertar imagen para el logo-->
+          <a href="index.html">
+                <img src="../imagenes/logo_pistachon.png" alt="El Pistachón" class="logo-img">
+            </a>
             <input type="checkbox" id="menu-toggle">
             <label for="menu">
                 <img src="../imagenes/menu_ico.png" class="menu-icon" alt="Menú">
