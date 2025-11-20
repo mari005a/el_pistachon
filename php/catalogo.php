@@ -67,9 +67,7 @@ $result = $stmt->get_result();
 
             <h1>Catálogo</h1>
             <p>
-                ¡Bienvenidos a nuestra tienda!
-                En este sitio web encontrarás todo lo que necesitas saber sobre nuestros productos: desde los distintos tipos de chiles que ofrecemos, hasta productos percederos. 
-                También te invitamos a conocer la historia que dio origen a este proyecto. ¡Gracias por visitarnos!
+                Explora nuestra amplia variedad de productos y encuentra lo que necesitas para tu hogar o negocio.
             </p>
         </div>
 
