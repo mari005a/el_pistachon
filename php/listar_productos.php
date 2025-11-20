@@ -111,7 +111,7 @@ td:nth-child(6) {
 
 <header class="header">
         <div class="nav-container container">
-            <a href="index.html">
+            <a href="../html/index.html">
                 <img src="../imagenes/logo_pistachon.png" alt="El Pistachón" class="logo-img">
             </a>
             <input type="checkbox" id="menu-toggle">

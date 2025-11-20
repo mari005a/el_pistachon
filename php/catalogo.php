@@ -43,7 +43,7 @@ $result = $stmt->get_result();
     <header class="header">
 
         <div class="nav-container container">
-          <a href="index.html">
+          <a href="../html/index.html">
                 <img src="../imagenes/logo_pistachon.png" alt="El Pistachón" class="logo-img">
             </a>
             <input type="checkbox" id="menu-toggle">
@@ -56,7 +56,7 @@ $result = $stmt->get_result();
                     <li><a href="../html/index.html">Inicio</a></li>
                     <li><a href="catalogo.php">Catálogo</a></li>
                     <li><a href="../html/acerca_de.html">Acerca de</a></li>
-                    <li><a href="login.php">Inicio de Sesión</a></li>
+                    <li><a href="login.php">Iniciar Sesión</a></li>
 
                 </ul>
             </nav>

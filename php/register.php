@@ -15,7 +15,7 @@
   <header style="background-color:#f5f5f5; padding:10px 0; border-bottom:1px solid #ccc;">
     <div style="display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; padding:0 40px;">
       
-    <a href="index.html">
+    <a href="../html/index.html">
                 <img src="../imagenes/logo_pistachon.png" alt="El Pistachón" class="logo-img">
             </a>
 
