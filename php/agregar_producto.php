@@ -74,43 +74,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </header>
 
-<section class="container" style="padding:40px;">
-  <h2>Agregar nuevo producto</h2>
-  <?php if (!empty($mensaje)): ?>
-    <p style="color:green;"><?php echo htmlspecialchars($mensaje); ?></p>
-  <?php endif; ?>
+    <section class="admin-section">
+    <div class="admin-form container">
+        <h2>Agregar Nuevo Producto</h2>
+        
+        <?php if (!empty($mensaje)): ?>
+            <div class="msg-success"><?php echo htmlspecialchars($mensaje); ?></div>
+        <?php endif; ?>
 
-  <form method="POST" enctype="multipart/form-data" style="display:flex; flex-direction:column; gap:15px; max-width:400px;">
-    <label>Nombre:
-      <input type="text" name="nombre" required>
-    </label>
+        <form method="POST" enctype="multipart/form-data">
+            <label>Nombre del Producto:</label>
+            <input type="text" name="nombre" required placeholder="Ingresa el nombre del producto">
 
-    <label>Descripción:
-      <textarea name="descripcion" rows="3" required></textarea>
-    </label>
+            <label>Descripción:</label>
+            <textarea name="descripcion" required placeholder="Describe el producto"></textarea>
 
-    <label>Stock (kg):
-      <input type="number" name="stock" min="0" step="0.1" required>
-    </label>
+            <label>Stock (kg):</label>
+            <input type="number" name="stock" min="0" step="0.1" required placeholder="0.0">
 
-    <label>Categoría:
-      <select name="categoria" required>
-        <option value="chiles">Chiles</option>
-        <option value="especias">Especias</option>
-        <option value="semillas">Semillas</option>
-        <option value="dulces">Dulces</option>
-        <option value="frutas-secas">Frutas Secas</option>
-        <option value="otros">Otros</option>
-      </select>
-    </label>
+            <label>Categoría:</label>
+            <select name="categoria" required>
+                <option value="">Selecciona una categoría</option>
+                <option value="chiles">Chiles</option>
+                <option value="especias">Especias</option>
+                <option value="semillas">Semillas</option>
+                <option value="dulces">Dulces</option>
+                <option value="frutas-secas">Frutas Secas</option>
+                <option value="otros">Otros</option>
+            </select>
 
-    <label>Imagen:
-      <input type="file" name="foto" accept="image/*" required>
-    </label>
+            <label>Imagen del Producto:</label>
+            <input type="file" name="foto" accept="image/*" required>
 
-    <button type="submit" class="btn-1">Agregar Producto</button>
-  </form>
+            <button type="submit" class="btn-admin">Agregar Producto</button>
+        </form>
+    </div>
 </section>
-
 </body>
 </html>
