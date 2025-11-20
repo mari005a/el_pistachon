@@ -24,11 +24,11 @@ if ($resultado->num_rows > 0) {
     $stmt->bind_param("ssss", $nombre, $email, $hash, $rol);
 
     if ($stmt->execute()) {
-        echo "✅ Admin creado correctamente.<br>";
+        echo "Admin creado correctamente.<br>";
         echo "Correo: $email<br>";
         echo "Contraseña: $passwordPlano<br>";
     } else {
-        echo "❌ Error al crear admin: " . $conn->error;
+        echo "Error al crear admin: " . $conn->error;
     }
 }
 ?>

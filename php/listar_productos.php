@@ -69,17 +69,30 @@ $result = $conn->query("SELECT * FROM productos ORDER BY id DESC");
 <body>
 
 <header class="header">
-  <div class="menu container">
-    <a href="admin.php" class="logo">Panel Admin</a>
-    <nav class="navbar">
-      <ul>
-        <li><a href="agregar_producto.php">Agregar Producto</a></li>
-        <li><a href="listar_productos.php">Gestionar Productos</a></li>
-        <li><a href="logout.php">Cerrar sesión</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+        <div class="nav-container container">
+            <a href="index.html">
+                <img src="../imagenes/logo_pistachon.png" alt="El Pistachón" class="logo-img">
+            </a>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle">
+                <img src="../imagenes/menu_ico.png" class="menu-icon" alt="Menú">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="agregar_producto.php">Agregar Producto</a></li>
+                    <li><a href="listar_productos.php">Gestionar Productos</a></li>
+                    <li><a href="logout.php">Cerrar sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="hero-content container">
+            <h1>Panel de Administrador</h1>
+            <p>
+                Agrega o gestiona tus productos en las opciones del menú.
+            </p>
+        </div>
+    </header>
 
 <section class="container" style="padding:40px;">
   <h2>Listado de Productos</h2>
@@ -87,11 +100,11 @@ $result = $conn->query("SELECT * FROM productos ORDER BY id DESC");
   <!-- Mensajes de feedback -->
   <?php if (isset($_GET['msg'])): ?>
     <?php if ($_GET['msg'] === 'deleted'): ?>
-      <div class="alert success">Producto eliminado correctamente ✅</div>
+      <div class="alert success">Producto eliminado correctamente</div>
     <?php elseif ($_GET['msg'] === 'updated'): ?>
-      <div class="alert success">Producto actualizado correctamente ✏️</div>
+      <div class="alert success">Producto actualizado correctamente</div>
     <?php elseif ($_GET['msg'] === 'error'): ?>
-      <div class="alert error">❌ Ocurrió un error al procesar la acción</div>
+      <div class="alert error">Ocurrió un error al procesar la acción</div>
     <?php endif; ?>
   <?php endif; ?>
 

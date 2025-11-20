@@ -55,7 +55,7 @@ $result = $stmt->get_result();
                 <ul>
                     <li><a href="../html/index.html">Inicio</a></li>
                     <li><a href="catalogo.php">Catálogo</a></li>
-                    <><a href="../html/acerca_de.html">Acerca de</a></li>
+                    <li><a href="../html/acerca_de.html">Acerca de</a></li>
                     <li><a href="login.php">Inicio de Sesión</a></li>
 
                 </ul>

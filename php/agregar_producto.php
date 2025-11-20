@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("ssiss", $nombre, $descripcion, $stock, $categoria, $foto);
 
     if ($stmt->execute()) {
-        $mensaje = "Producto agregado correctamente ✅";
+        $mensaje = "Producto agregado correctamente ";
     } else {
         $mensaje = "Error al agregar producto: " . $conn->error;
     }
@@ -49,17 +49,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 
 <header class="header">
-  <div class="menu container">
-    <a href="admin.php" class="logo">Panel Admin</a>
-    <nav class="navbar">
-      <ul>
-        <li><a href="agregar_producto.php">Agregar Producto</a></li>
-        <li><a href="listar_productos.php">Gestionar Productos</a></li>
-        <li><a href="logout.php">Cerrar sesión</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+        <div class="nav-container container">
+            <a href="index.html">
+                <img src="../imagenes/logo_pistachon.png" alt="El Pistachón" class="logo-img">
+            </a>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle">
+                <img src="../imagenes/menu_ico.png" class="menu-icon" alt="Menú">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="agregar_producto.php">Agregar Producto</a></li>
+                    <li><a href="listar_productos.php">Gestionar Productos</a></li>
+                    <li><a href="logout.php">Cerrar sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="hero-content container">
+            <h1>Panel de Administrador</h1>
+            <p>
+                Agrega o gestiona tus productos en las opciones del menú.
+            </p>
+        </div>
+    </header>
 
 <section class="container" style="padding:40px;">
   <h2>Agregar nuevo producto</h2>
