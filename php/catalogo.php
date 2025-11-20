@@ -55,7 +55,7 @@ $result = $stmt->get_result();
                 <ul>
                     <li><a href="../html/index.html">Inicio</a></li>
                     <li><a href="catalogo.php">Catálogo</a></li>
-                    <li><a href="../html/acerca_de.html">Acerca de</a></li>
+                    <><a href="../html/acerca_de.html">Acerca de</a></li>
                     <li><a href="login.php">Inicio de Sesión</a></li>
 
                 </ul>
@@ -111,26 +111,23 @@ $result = $stmt->get_result();
 </div>
 
 <footer class="footer">
-
-    <div class="footer-content container">
-        <div class="link">
-            <h3>Sobre Nosotros</h3>
-            <ul>
-                <li><a href="acerca_de.html">Trabaja con nosotros</a></li>
-                <li><a href="acerca_de.html">Negocio</a></li>
-                <li><a href="acerca_de.html">Proveedores</a></li>
-            </ul>
+        <div class="footer-content container">
+            <div class="footer-section">
+                <h3>Sobre Nosotros</h3>
+                <ul>
+                    <li><a href="acerca_de.html">Historia</a></li>
+                    <li><a href="acerca_de.html">Localización</a></li>
+                    <li><a href="acerca_de.html">Proveedores</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Atención al cliente</h3>
+                <ul>
+                    <li><a href="acerca_de.html">Tel: 646-128-5183</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="link">
-
-            <h3>Atención al cliente</h3>
-            <ul>
-                <li><a href="acerca_de.html">Tel: 646-128-5183</a></li>
-            </ul>
-        </div>
-    </div>
-
-</footer>
+    </footer>
 
 </body>
 </html>
