@@ -389,8 +389,9 @@ p {
 }
 
 .seasonal-card img {
-    width: 100%;
-    max-width: 250px;
+    width: 300px; /* Especificar un tamaño fijo */
+    height: 250px; /* Especificar un tamaño fijo */
+    object-fit: cover; /* Asegurar que la imagen se ajuste sin deformarse */
     border-radius: 15px;
     margin-bottom: 15px;
 }
