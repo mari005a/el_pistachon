@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label>Descripción:</label>
             <textarea name="descripcion" rows="3" required placeholder="Describe el producto"><?php echo htmlspecialchars($producto['descripcion']); ?></textarea>
 
-            <label>Stock (kg/unidades):</label>
+            <label>Stock (kg):</label>
             <input type="number" name="stock" min="0" step="0.1" value="<?php echo htmlspecialchars($producto['stock']); ?>" required placeholder="0.0">
 
             <label>Categoría:</label>

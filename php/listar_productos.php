@@ -36,6 +36,9 @@ $result = $conn->query("SELECT * FROM productos ORDER BY id DESC");
       width: 100%;
       border-collapse: collapse;
       margin-top: 30px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
     th, td {
       border: 1px solid #ccc;
@@ -46,15 +49,41 @@ $result = $conn->query("SELECT * FROM productos ORDER BY id DESC");
       background: #3eb43a;
       color: #fff;
     }
-    .acciones a {
-      margin: 0 5px;
-      text-decoration: none;
-      padding: 6px 12px;
-      border-radius: 6px;
-      color: #fff;
+    .table-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
     }
-    .editar { background: #007bff; }
-    .eliminar { background: #dc3545; }
+    .btn-edit {
+      background: #007bff;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+    .btn-edit:hover {
+      background: #0056b3;
+      transform: translateY(-2px);
+    }
+    .btn-delete {
+      background: #dc3545;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+    .btn-delete:hover {
+      background: #c82333;
+      transform: translateY(-2px);
+    }
     .alert {
       padding: 12px;
       border-radius: 6px;
@@ -64,6 +93,18 @@ $result = $conn->query("SELECT * FROM productos ORDER BY id DESC");
     }
     .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
     .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    .category-badge {
+      background: #e1e2e6; 
+      padding: 5px 10px; 
+      border-radius: 15px; 
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    th:nth-child(6), 
+td:nth-child(6) {
+    width: 150px; /* o el tamaño que prefieras */
+}
   </style>
 </head>
 <body>
@@ -128,10 +169,14 @@ $result = $conn->query("SELECT * FROM productos ORDER BY id DESC");
           <td><?php echo htmlspecialchars($row['nombre']); ?></td>
           <td><?php echo htmlspecialchars($row['descripcion']); ?></td>
           <td><?php echo htmlspecialchars($row['stock']); ?></td>
-          <td><?php echo htmlspecialchars($row['categoria']); ?></td>
-          <td class="acciones">
-            <a href="editar_producto.php?id=<?php echo $row['id']; ?>" class="editar">Editar</a>
-            <a href="listar_productos.php?eliminar=<?php echo $row['id']; ?>" class="eliminar" onclick="return confirm('¿Seguro que deseas eliminar este producto?');">Eliminar</a>
+          <td>
+            <span class="category-badge"><?php echo htmlspecialchars($row['categoria']); ?></span>
+          </td>
+          <td>
+            <div class="table-actions">
+              <a href="editar_producto.php?id=<?php echo $row['id']; ?>" class="btn-edit">Editar</a>
+              <a href="listar_productos.php?eliminar=<?php echo $row['id']; ?>" class="btn-delete" onclick="return confirm('¿Seguro que deseas eliminar este producto?');">Eliminar</a>
+            </div>
           </td>
         </tr>
       <?php endwhile; ?>

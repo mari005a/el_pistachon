@@ -1266,3 +1266,59 @@ body:has(.header) .hero-content p {
     margin-left: auto;
     margin-right: auto;
 }
+/* ===== ESTILOS PARA SELECTS Y INPUTS ===== */
+.admin-form input,
+.admin-form textarea,
+.admin-form select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e1e2e6;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+    margin-bottom: 20px;
+    background-color: white;
+    color: #323337; /* Color de texto igual que los inputs */
+    font-family: 'Poppins', sans-serif;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus,
+.admin-form select:focus {
+    border-color: #24c21f;
+    outline: none;
+    box-shadow: 0 0 5px rgba(36, 194, 31, 0.3);
+}
+
+/* Estilo específico para selects */
+.admin-form select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23323337' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+    padding-right: 45px;
+    cursor: pointer;
+}
+
+.admin-form select option {
+    color: #323337;
+    background-color: white;
+    padding: 10px;
+}
+
+.admin-form select option:hover {
+    background-color: #24c21f;
+    color: white;
+}
+
+/* Placeholder color */
+.admin-form input::placeholder,
+.admin-form textarea::placeholder {
+    color: #a0a0a0;
+}
+
+/* Estilo para cuando el select está abierto */
+.admin-form select:focus {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2324c21f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+}
