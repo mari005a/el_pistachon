@@ -728,12 +728,12 @@ body:has(.header) .hero-content p {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
   background: #ffffff;
   border-radius: 50px;
   padding: 15px 25px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  max-width: 900px;
+  max-width: 550px;
   width: 100%;
   transition: box-shadow 0.3s ease;
 }
