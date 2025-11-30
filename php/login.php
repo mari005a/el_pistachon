@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iniciar Sesión | El Pistachón</title>
   <link rel="stylesheet" href="../css/style.css">
-  <!-- Agregar Font Awesome para iconos -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -14,11 +13,10 @@
 
   <header style="background-color:#f5f5f5; padding:10px 0; border-bottom:1px solid #ccc;">
     <div style="display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; padding:0 40px;">
-      
     <a href="../html/index.html">
                 <img src="../imagenes/logo_pistachon.png" alt="El Pistachón" class="logo-img">
             </a>
-
+      
       <nav>
         <ul style="list-style:none; display:flex; gap:40px; margin:0; padding:0;">
           <li><a href="../html/index.html" style="text-decoration:none; color:#333; font-weight:500;">Inicio</a></li>

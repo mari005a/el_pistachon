@@ -41,30 +41,25 @@ $result = $stmt->get_result();
 <body>
 
     <header class="header">
-
         <div class="nav-container container">
           <a href="../html/index.html">
                 <img src="../imagenes/logo_pistachon.png" alt="El Pistachón" class="logo-img">
             </a>
             <input type="checkbox" id="menu-toggle">
-            <label for="menu">
+            <label for="menu-toggle">
                 <img src="../imagenes/menu_ico.png" class="menu-icon" alt="Menú">
             </label>
-
             <nav class="navbar">
                 <ul>
                     <li><a href="../html/index.html">Inicio</a></li>
                     <li><a href="catalogo.php">Catálogo</a></li>
                     <li><a href="../html/acerca_de.html">Acerca de</a></li>
                     <li><a href="login.php">Iniciar Sesión</a></li>
-
                 </ul>
             </nav>
-
         </div>
 
         <div class="hero-content container">
-
             <h1>Catálogo</h1>
             <p>
                 Explora nuestra amplia variedad de productos y encuentra lo que necesitas para tu hogar o negocio.
@@ -113,15 +108,15 @@ $result = $stmt->get_result();
             <div class="footer-section">
                 <h3>Sobre Nosotros</h3>
                 <ul>
-                    <li><a href="acerca_de.html">Historia</a></li>
-                    <li><a href="acerca_de.html">Localización</a></li>
-                    <li><a href="acerca_de.html">Proveedores</a></li>
+                    <li><a href="../html/acerca_de.html">Historia</a></li>
+                    <li><a href="../html/acerca_de.html">Localización</a></li>
+                    <li><a href="../html/acerca_de.html">Redes sociales</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>Atención al cliente</h3>
                 <ul>
-                    <li><a href="acerca_de.html">Tel: 646-128-5183</a></li>
+                <li><a href="https://wa.me/526461285183">Tel: 646-128-5183</a></li>
                 </ul>
             </div>
         </div>
