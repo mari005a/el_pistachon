@@ -12,7 +12,7 @@ if (!isset($_SESSION['id']) || $_SESSION['rol'] !== 'admin') {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['nombre'] ?? '';
     $descripcion = $_POST['descripcion'] ?? '';
-    $stock = $_POST['stock'] ?? 0;
+    $precio = $_POST['precio'] ?? 0;
     $categoria = $_POST['categoria'] ?? '';
 
     // Manejo de imagen
@@ -28,9 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Insertar en BD
-    $sql = "INSERT INTO productos (nombre, descripcion, stock, categoria, foto) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO productos (nombre, descripcion, precio, categoria, foto) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssiss", $nombre, $descripcion, $stock, $categoria, $foto);
+    $stmt->bind_param("ssiss", $nombre, $descripcion, $precio, $categoria, $foto);
 
     if ($stmt->execute()) {
         $mensaje = "Producto agregado correctamente ";
@@ -89,8 +89,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label>Descripción:</label>
             <textarea name="descripcion" required placeholder="Describe el producto"></textarea>
 
-            <label>Stock (kg/unidades):</label>
-            <input type="number" name="stock" min="0" step="0.1" required placeholder="0.0">
+            <label>Precio:</label>
+            <textarea name="precio" required placeholder="Ingresa el precio"></textarea>
 
             <label>Categoría:</label>
             <select name="categoria" required>

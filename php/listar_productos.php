@@ -156,7 +156,7 @@ td:nth-child(6) {
         <th>Imagen</th>
         <th>Nombre</th>
         <th>Descripción</th>
-        <th>Stock</th>
+        <th>Precio</th>
         <th>Categoría</th>
         <th>Acciones</th>
       </tr>
@@ -168,7 +168,7 @@ td:nth-child(6) {
           <td><img src="../imagenes/<?php echo htmlspecialchars($row['foto']); ?>" alt="" style="width:60px; height:60px; object-fit:cover;"></td>
           <td><?php echo htmlspecialchars($row['nombre']); ?></td>
           <td><?php echo htmlspecialchars($row['descripcion']); ?></td>
-          <td><?php echo htmlspecialchars($row['stock']); ?></td>
+          <td><?php echo htmlspecialchars($row['precio']); ?></td>
           <td>
             <span class="category-badge"><?php echo htmlspecialchars($row['categoria']); ?></span>
           </td>

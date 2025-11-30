@@ -31,7 +31,7 @@ if (!$producto) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['nombre'] ?? '';
     $descripcion = $_POST['descripcion'] ?? '';
-    $stock = $_POST['stock'] ?? 0;
+    $stock = $_POST['precio'] ?? 0;
     $categoria = $_POST['categoria'] ?? '';
     $foto = $producto['foto']; // mantener la actual
 
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    $sql = "UPDATE productos SET nombre=?, descripcion=?, stock=?, categoria=?, foto=? WHERE id=?";
+    $sql = "UPDATE productos SET nombre=?, descripcion=?, precio=?, categoria=?, foto=? WHERE id=?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssissi", $nombre, $descripcion, $stock, $categoria, $foto, $id);
 
@@ -107,8 +107,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label>Descripción:</label>
             <textarea name="descripcion" rows="3" required placeholder="Describe el producto"><?php echo htmlspecialchars($producto['descripcion']); ?></textarea>
 
-            <label>Stock (kg):</label>
-            <input type="number" name="stock" min="0" step="0.1" value="<?php echo htmlspecialchars($producto['stock']); ?>" required placeholder="0.0">
+            <label>Precio:</label>
+            <input type="number" name="precio" min="0" step="0.1" value="<?php echo htmlspecialchars($producto['stock']); ?>" required placeholder="0.0">
 
             <label>Categoría:</label>
             <select name="categoria" required>
