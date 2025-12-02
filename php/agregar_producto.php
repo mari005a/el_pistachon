@@ -8,6 +8,8 @@ if (!isset($_SESSION['id']) || $_SESSION['rol'] !== 'admin') {
     exit;
 }
 
+$mensaje = "";
+
 // Procesar formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['nombre'] ?? '';
@@ -18,7 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $precio = str_replace(['$', ',', ' '], '', $precio);
     $precio = floatval($precio);
 
-    $categoria = $_POST['categoria'] ?? '';
+    // Categorías múltiples
+    $categorias = $_POST['categorias'] ?? [];
+    if (empty($categorias)) {
+        $mensaje = "Debes seleccionar al menos una categoría.";
+    } else {
+        $categoria = implode(',', $categorias);
+    }
 
     // Manejo de imagen
     $foto = 'no_image.png'; // por defecto
@@ -33,14 +41,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Insertar en BD
-    $sql = "INSERT INTO productos (nombre, descripcion, precio, categoria, foto) VALUES (?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssdss", $nombre, $descripcion, $precio, $categoria, $foto);
+    if (!empty($categoria)) {
+        $sql = "INSERT INTO productos (nombre, descripcion, precio, categoria, foto) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssdss", $nombre, $descripcion, $precio, $categoria, $foto);
 
-    if ($stmt->execute()) {
-        $mensaje = "Producto agregado correctamente";
-    } else {
-        $mensaje = "Error al agregar producto: " . $conn->error;
+        if ($stmt->execute()) {
+            $mensaje = "Producto agregado correctamente";
+        } else {
+            $mensaje = "Error al agregar producto: " . $conn->error;
+        }
     }
 }
 ?>
@@ -93,21 +103,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <textarea name="descripcion" required placeholder="Describe el producto"></textarea>
 
         <label>Precio:</label>
-        <textarea name="precio" required placeholder="Ingresa el precio"></textarea>
+        <input type="text" name="precio" required placeholder="Ingresa el precio">
 
-        <label>Categoría:</label>
-        <select name="categoria" required>
-            <option value="">Selecciona una categoría</option>
-            <option value="chiles">Chiles</option>
-            <option value="especias">Especias</option>
-            <option value="semillas">Semillas</option>
-            <option value="dulces">Dulces</option>
-            <option value="frutas-secas">Frutas Secas</option>
-            <option value="otros">Otros</option>
-        </select>
+        <label>Categorías:</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="categorias[]" value="chiles"> Chiles</label>
+            <label><input type="checkbox" name="categorias[]" value="especias"> Especias</label>
+            <label><input type="checkbox" name="categorias[]" value="semillas"> Semillas</label>
+            <label><input type="checkbox" name="categorias[]" value="dulces"> Dulces</label>
+            <label><input type="checkbox" name="categorias[]" value="frutas-secas"> Frutas Secas</label>
+            <label><input type="checkbox" name="categorias[]" value="otros"> Otros</label>
+        </div>
 
         <label>Imagen del Producto:</label>
-        <input type="file" name="foto" accept="image/*" required>
+        <input type="file" name="foto" accept="image/*">
 
         <button type="submit" class="btn-admin">Agregar Producto</button>
     </form>

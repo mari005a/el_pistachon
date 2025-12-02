@@ -1902,3 +1902,27 @@ body:has(.header) .hero-content p {
   gap: 16px !important;
   width: 100%;
 }   
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 10px 0;
+}
+
+.checkbox-group label {
+  background: #f8f9fa;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.checkbox-group label:hover {
+  background: #24c21f;
+  color: #fff;
+}

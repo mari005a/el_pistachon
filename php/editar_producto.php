@@ -15,9 +15,7 @@ if ($id <= 0) {
     exit;
 }
 
-// ================================
-// CONSULTAR PRODUCTO ACTUAL
-// ================================
+// Consultar producto actual
 $stmt = $conn->prepare("SELECT * FROM productos WHERE id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
@@ -29,11 +27,10 @@ if (!$producto) {
     exit;
 }
 
-// ================================
-// PROCESAR ACTUALIZACIÓN
-// ================================
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+$mensaje = "";
 
+// Procesar actualización
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['nombre'] ?? '';
     $descripcion = $_POST['descripcion'] ?? '';
 
@@ -42,7 +39,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $precio = str_replace(['$', ',', ' '], '', $precio);
     $precio = floatval($precio);
 
-    $categoria = $_POST['categoria'] ?? '';
+    // Categorías múltiples
+    $categorias = $_POST['categorias'] ?? [];
+    if (empty($categorias)) {
+        $mensaje = "Debes seleccionar al menos una categoría.";
+    } else {
+        $categoria = implode(',', $categorias);
+    }
+
     $foto = $producto['foto'];
 
     // Si sube nueva imagen
@@ -56,20 +60,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // ================================
-    // UPDATE CORRECTO
-    // ================================
-    $sql = "UPDATE productos 
-            SET nombre=?, descripcion=?, precio=?, categoria=?, foto=? 
-            WHERE id=?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssdssi", $nombre, $descripcion, $precio, $categoria, $foto, $id);
+    // UPDATE
+    if (!empty($categoria)) {
+        $sql = "UPDATE productos 
+                SET nombre=?, descripcion=?, precio=?, categoria=?, foto=? 
+                WHERE id=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssdssi", $nombre, $descripcion, $precio, $categoria, $foto, $id);
 
-    if ($stmt->execute()) {
-        header("Location: listar_productos.php?msg=updated");
-        exit;
-    } else {
-        $mensaje = "Error al actualizar: " . $conn->error;
+        if ($stmt->execute()) {
+            header("Location: listar_productos.php?msg=updated");
+            exit;
+        } else {
+            $mensaje = "Error al actualizar: " . $conn->error;
+        }
     }
 }
 ?>
@@ -124,15 +128,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label>Precio:</label>
         <input type="text" name="precio" value="<?php echo "$" . htmlspecialchars($producto['precio']); ?>" required>
 
-        <label>Categoría:</label>
-        <select name="categoria" required>
-            <option value="chiles"        <?php if($producto['categoria']=='chiles') echo 'selected'; ?>>Chiles</option>
-            <option value="especias"      <?php if($producto['categoria']=='especias') echo 'selected'; ?>>Especias</option>
-            <option value="semillas"      <?php if($producto['categoria']=='semillas') echo 'selected'; ?>>Semillas</option>
-            <option value="dulces"        <?php if($producto['categoria']=='dulces') echo 'selected'; ?>>Dulces</option>
-            <option value="frutas-secas"  <?php if($producto['categoria']=='frutas-secas') echo 'selected'; ?>>Frutas Secas</option>
-            <option value="otros"         <?php if($producto['categoria']=='otros') echo 'selected'; ?>>Otros</option>
-        </select>
+        <label>Categorías:</label>
+        <div class="checkbox-group">
+            <?php 
+            $categorias_actuales = explode(',', $producto['categoria']);
+            $opciones = ['chiles','especias','semillas','dulces','frutas-secas','otros'];
+            foreach ($opciones as $op) {
+                $checked = in_array($op, $categorias_actuales) ? 'checked' : '';
+                echo "<label><input type='checkbox' name='categorias[]' value='$op' $checked> ".ucfirst($op)."</label>";
+            }
+            ?>
+        </div>
 
         <div class="current-image">
             <label>Imagen Actual:</label>
