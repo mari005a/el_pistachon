@@ -91,17 +91,26 @@ $result = $stmt->get_result();
 </section>
 
 <div class="catalog-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 32px;">
-  <?php while ($row = $result->fetch_assoc()): ?>
+ <?php while ($row = $result->fetch_assoc()): ?>
     <div>
       <div class="catalog-info" style="background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.12); border-radius: 12px; padding: 12px; margin-top: 8px; padding-top: 25px;">
-        <img src="../imagenes/<?php echo htmlspecialchars($row['foto']); ?>" alt="<?php echo htmlspecialchars($row['nombre']); ?>" class="catalog-img" style="padding-bottom: 20px;">
+
+        <!-- Imagen con función para abrir modal -->
+        <img 
+          src="../imagenes/<?php echo htmlspecialchars($row['foto']); ?>" 
+          alt="<?php echo htmlspecialchars($row['nombre']); ?>" 
+          class="catalog-img"
+          onclick="openModal(this)"
+        >
+
         <h4><?php echo htmlspecialchars($row['nombre']); ?></h4>
         <p><?php echo htmlspecialchars($row['descripcion']); ?></p>
         <span>Precio: <?php echo htmlspecialchars($row['precio']); ?></span>
       </div>
     </div>
-  <?php endwhile; ?>
+<?php endwhile; ?>
 </div>
+
 
 <footer class="footer">
         <div class="footer-content container">
@@ -121,6 +130,35 @@ $result = $stmt->get_result();
             </div>
         </div>
     </footer>
+<!-- Modal para ampliar imagen -->
+<div id="imgModal" class="modal" onclick="closeModal()">
+  <span class="close" onclick="closeModal(); event.stopPropagation();">&times;</span>
+  <!-- evita que el clic en la imagen cierre el modal -->
+  <img class="modal-content" id="modalImg" onclick="event.stopPropagation();">
+</div>
+
+<script>
+function openModal(img) {
+  const modal = document.getElementById("imgModal");
+  const modalImg = document.getElementById("modalImg");
+
+  modal.style.display = "flex"; // <-- usar flex para aplicar centrado
+  modalImg.src = img.src;
+  // asegura que el foco vaya al modal (opcional, mejora accesibilidad)
+  modal.setAttribute('aria-hidden', 'false');
+}
+
+function closeModal() {
+  const modal = document.getElementById("imgModal");
+  modal.style.display = "none";
+  modal.setAttribute('aria-hidden', 'true');
+}
+
+// cerrar con Esc
+document.addEventListener('keydown', function(e) {
+  if (e.key === "Escape") closeModal();
+});
+</script>
 
 </body>
 </html>
