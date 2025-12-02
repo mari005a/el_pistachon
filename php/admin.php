@@ -11,7 +11,7 @@ if (!isset($_SESSION['id']) || $_SESSION['rol'] !== 'admin') {
 // Consultas para estadísticas
 $totalProductos = $conn->query("SELECT COUNT(*) AS total FROM productos")->fetch_assoc()['total'];
 $totalCategorias = $conn->query("SELECT COUNT(DISTINCT categoria) AS total FROM productos")->fetch_assoc()['total'];
-$totalStock = $conn->query("SELECT SUM(stock) AS total FROM productos")->fetch_assoc()['total'];
+$totalprecio = $conn->query("SELECT SUM(precio) AS total FROM productos")->fetch_assoc()['total'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -86,10 +86,6 @@ $totalStock = $conn->query("SELECT SUM(stock) AS total FROM productos")->fetch_a
     <div class="card">
       <h3>Categorías</h3>
       <p><?php echo $totalCategorias; ?></p>
-    </div>
-    <div class="card">
-      <h3>Stock Disponible (kg)</h3>
-      <p><?php echo $totalStock ?? 0; ?></p>
     </div>
   </div>
 </section>
