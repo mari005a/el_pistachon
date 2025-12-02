@@ -97,7 +97,7 @@ $result = $stmt->get_result();
         <img src="../imagenes/<?php echo htmlspecialchars($row['foto']); ?>" alt="<?php echo htmlspecialchars($row['nombre']); ?>" class="catalog-img" style="padding-bottom: 20px;">
         <h4><?php echo htmlspecialchars($row['nombre']); ?></h4>
         <p><?php echo htmlspecialchars($row['descripcion']); ?></p>
-        <span>Stock: <?php echo htmlspecialchars($row['precio']); ?></span>
+        <span>Precio: <?php echo htmlspecialchars($row['precio']); ?></span>
       </div>
     </div>
   <?php endwhile; ?>

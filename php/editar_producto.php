@@ -15,7 +15,9 @@ if ($id <= 0) {
     exit;
 }
 
-// Consultar producto actual
+// ================================
+// CONSULTAR PRODUCTO ACTUAL
+// ================================
 $stmt = $conn->prepare("SELECT * FROM productos WHERE id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
@@ -27,8 +29,11 @@ if (!$producto) {
     exit;
 }
 
-// Procesar actualización
+// ================================
+// PROCESAR ACTUALIZACIÓN
+// ================================
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     $nombre = $_POST['nombre'] ?? '';
     $descripcion = $_POST['descripcion'] ?? '';
 
@@ -40,21 +45,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $categoria = $_POST['categoria'] ?? '';
     $foto = $producto['foto'];
 
-    // Manejo de imagen nueva
+    // Si sube nueva imagen
     if (!empty($_FILES['foto']['name'])) {
         $targetDir = "../imagenes/";
         $foto = basename($_FILES['foto']['name']);
         $targetFile = $targetDir . $foto;
 
         if (!move_uploaded_file($_FILES['foto']['tmp_name'], $targetFile)) {
-            $foto = $producto['foto'];
+            $foto = $producto['foto']; // Si falla, dejar la anterior
         }
     }
 
-    // Actualizar BD
-    $sql = "UPDATE productos SET nombre=?, descripcion=?, precio=?, categoria=?, foto=? WHERE id=?";
+    // ================================
+    // UPDATE CORRECTO
+    // ================================
+    $sql = "UPDATE productos 
+            SET nombre=?, descripcion=?, precio=?, categoria=?, foto=? 
+            WHERE id=?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssisi", $nombre, $descripcion, $precio, $categoria, $foto, $id);
+    $stmt->bind_param("ssdssi", $nombre, $descripcion, $precio, $categoria, $foto, $id);
 
     if ($stmt->execute()) {
         header("Location: listar_productos.php?msg=updated");
@@ -113,21 +122,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <textarea name="descripcion" required><?php echo htmlspecialchars($producto['descripcion']); ?></textarea>
 
         <label>Precio:</label>
-        <textarea name="precio" required><?php echo "$" . htmlspecialchars($producto['precio']); ?></textarea>
+        <input type="text" name="precio" value="<?php echo "$" . htmlspecialchars($producto['precio']); ?>" required>
 
         <label>Categoría:</label>
         <select name="categoria" required>
-            <option value="chiles" <?php if($producto['categoria']=='chiles') echo 'selected'; ?>>Chiles</option>
-            <option value="especias" <?php if($producto['categoria']=='especias') echo 'selected'; ?>>Especias</option>
-            <option value="semillas" <?php if($producto['categoria']=='semillas') echo 'selected'; ?>>Semillas</option>
-            <option value="dulces" <?php if($producto['categoria']=='dulces') echo 'selected'; ?>>Dulces</option>
-            <option value="frutas-secas" <?php if($producto['categoria']=='frutas-secas') echo 'selected'; ?>>Frutas Secas</option>
-            <option value="otros" <?php if($producto['categoria']=='otros') echo 'selected'; ?>>Otros</option>
+            <option value="chiles"        <?php if($producto['categoria']=='chiles') echo 'selected'; ?>>Chiles</option>
+            <option value="especias"      <?php if($producto['categoria']=='especias') echo 'selected'; ?>>Especias</option>
+            <option value="semillas"      <?php if($producto['categoria']=='semillas') echo 'selected'; ?>>Semillas</option>
+            <option value="dulces"        <?php if($producto['categoria']=='dulces') echo 'selected'; ?>>Dulces</option>
+            <option value="frutas-secas"  <?php if($producto['categoria']=='frutas-secas') echo 'selected'; ?>>Frutas Secas</option>
+            <option value="otros"         <?php if($producto['categoria']=='otros') echo 'selected'; ?>>Otros</option>
         </select>
 
         <div class="current-image">
             <label>Imagen Actual:</label>
-            <img src="../imagenes/<?php echo htmlspecialchars($producto['foto']); ?>" alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
+            <img src="../imagenes/<?php echo htmlspecialchars($producto['foto']); ?>" alt="<?php echo htmlspecialchars($producto['nombre']); ?>" width="150">
         </div>
 
         <label>Nueva Imagen (opcional):</label>
