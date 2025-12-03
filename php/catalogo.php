@@ -105,7 +105,7 @@ $result = $stmt->get_result();
 
         <h4><?php echo htmlspecialchars($row['nombre']); ?></h4>
         <p><?php echo htmlspecialchars($row['descripcion']); ?></p>
-        <span>Precio: <?php echo htmlspecialchars($row['precio']); ?></span>
+        <span>Precio: $<?php echo htmlspecialchars($row['precio']); ?></span>
       </div>
     </div>
 <?php endwhile; ?>
