@@ -854,60 +854,6 @@ body:has(.header) .hero-content p {
         flex: 0 1 calc(50% - 30px);
         min-width: 280px;
     }
-} 
-
-
-
-/* === ESTILOS DEL MODAL PARA AMPLIAR IMAGEN === */
-
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  padding-top: 60px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.8);
-}
-
-.modal-content {
-  display: block;
-  margin: auto;
-  max-width: 60%;
-  max-height: 80vh;
-  border-radius: 10px;
-}
-
-.close {
-  position: absolute;
-  top: 20px;
-  right: 35px;
-  font-size: 40px;
-  font-weight: bold;
-  color: white;
-  cursor: pointer;
-}
-
-/* Estilo de la imagen del catálogo */
-.catalog-img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto 10px auto;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.catalog-img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
     
     /* Ajuste de imágenes de fondo en tablets */
     .products-section::before {
@@ -996,7 +942,7 @@ body:has(.header) .hero-content p {
     .search-input {
         width: 100%;
     }
-
+}
 
 /* === MÓVILES GRANDES (576px - 767px) === */
 @media (max-width: 767px) {
@@ -1896,18 +1842,14 @@ body:has(.header) .hero-content p {
     }
 }
 
-.catalog-grid {
-  display: grid !important;                /* asegurar que sea grid */
-  grid-template-columns: repeat(5, 1fr) !important;
-  gap: 16px !important;
-  width: 100%;
-}   
-
 .checkbox-group {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
   margin: 10px 0;
+  align-items: center;
+justify-content: center; /* ¡Esta es la clave! */
+  text-align: center;
 }
 
 .checkbox-group label {
