@@ -35,6 +35,8 @@ $result = $stmt->get_result();
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Catálogo | El pistachón</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -93,7 +95,7 @@ $result = $stmt->get_result();
 <div class="catalog-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 32px;">
  <?php while ($row = $result->fetch_assoc()): ?>
     <div>
-      <div class="catalog-info" style="background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.12); border-radius: 12px; padding: 12px; margin-top: 8px; padding-top: 25px;">
+      <div class="catalog-info" style="background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.12); border-radius: 12px; padding: 12px; margin-top: 8px; padding-top: 25px; justify-content: center; align-items: center;">
 
         <!-- Imagen con función para abrir modal -->
         <img 
