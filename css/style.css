@@ -923,9 +923,10 @@ body:has(.header) .hero-content p {
         height: 30px;
     }
     
-    /* Logo más pequeño en tablets */
+    /* Logo MÁS GRANDE en tablets - AUMENTADO DE 50px A 80px */
     .logo-img {
-        height: 50px;
+        height: 80px !important;
+        max-width: 180px !important;
     }
     
     /* Ajustes de contenido */
@@ -1066,8 +1067,10 @@ body:has(.header) .hero-content p {
         padding: 15px;
     }
     
+    /* Logo MÁS GRANDE en móviles grandes - AUMENTADO DE 45px A 70px */
     .logo-img {
-        height: 45px;
+        height: 70px !important;
+        max-width: 160px !important;
     }
     
     .hero-content {
@@ -1204,8 +1207,10 @@ body:has(.header) .hero-content p {
         padding: 12px;
     }
     
+    /* Logo MÁS GRANDE en móviles pequeños - AUMENTADO DE 40px A 65px */
     .logo-img {
-        height: 40px;
+        height: 65px !important;
+        max-width: 150px !important;
     }
     
     .menu-icon {
@@ -1393,8 +1398,10 @@ body:has(.header) .hero-content p {
         gap: 15px;
     }
     
+    /* Logo MÁS GRANDE en tablets pequeñas - AUMENTADO DE 50px A 75px */
     .logo-img {
-        height: 50px;
+        height: 75px !important;
+        max-width: 170px !important;
     }
     
     .header {
@@ -1564,8 +1571,10 @@ body:has(.header) .hero-content p {
         left: -50px;
     }
     
+    /* Logo MÁS GRANDE en móviles - AUMENTADO DE 45px A 60px */
     .logo-img {
-        height: 45px;
+        height: 60px !important;
+        max-width: 140px !important;
     }
     
     .hero-content {
@@ -1619,8 +1628,10 @@ body:has(.header) .hero-content p {
         left: -40px;
     }
     
+    /* Logo MÁS GRANDE en móviles pequeños - AUMENTADO DE 40px A 55px */
     .logo-img {
-        height: 40px;
+        height: 55px !important;
+        max-width: 130px !important;
     }
     
     .hero-content {
@@ -2044,9 +2055,10 @@ body:has(.header) .hero-content p {
         gap: 15px;
     }
 
+    /* Logo MÁS GRANDE en header responsive */
     .logo-img {
-        height: 40px;
-        max-width: 120px;
+        height: 70px !important;
+        max-width: 160px !important;
     }
 
     .navbar ul li a {
@@ -2070,8 +2082,10 @@ body:has(.header) .hero-content p {
 }
 
 @media (max-width: 480px) {
+    /* Logo MÁS GRANDE en móviles pequeños */
     .logo-img {
-        height: 35px;
+        height: 60px !important;
+        max-width: 140px !important;
     }
 
     .menu-icon {
