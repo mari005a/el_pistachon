@@ -113,7 +113,6 @@ $result = $stmt->get_result();
 <?php endwhile; ?>
 </div>
 
-
 <footer class="footer">
         <div class="footer-content container">
             <div class="footer-section">
