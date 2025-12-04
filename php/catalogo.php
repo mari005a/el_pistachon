@@ -69,25 +69,27 @@ $result = $stmt->get_result();
 </header>
 
 <section class="search-section">
-    <div class="search-container">
-        <form method="GET" action="catalogo.php">
-            <select name="categoria" class="category-select">
-                <option value="">Todas las categorías</option>
-                <option value="chiles" <?php echo ($categoria == 'chiles') ? 'selected' : ''; ?>>Chiles</option>
-                <option value="especias" <?php echo ($categoria == 'especias') ? 'selected' : ''; ?>>Especias</option>
-                <option value="semillas" <?php echo ($categoria == 'semillas') ? 'selected' : ''; ?>>Semillas</option>
-                <option value="dulces" <?php echo ($categoria == 'dulces') ? 'selected' : ''; ?>>Dulces</option>
-                <option value="frutas-secas" <?php echo ($categoria == 'frutas-secas') ? 'selected' : ''; ?>>Frutas Secas</option>
-                <option value="otros" <?php echo ($categoria == 'otros') ? 'selected' : ''; ?>>Otros</option>
-            </select>
+  <div class="search-container">
+    <form method="GET" action="catalogo.php" style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+      <select name="categoria" class="category-select">
+        <option value="">Todas las categorías</option>
+        <option value="chiles">Chiles</option>
+        <option value="especias">Especias</option>
+        <option value="semillas">Semillas</option>
+        <option value="dulces">Dulces</option>
+        <option value="frutas-secas">Frutas Secas</option>
+        <option value="otros">Otros</option>
+      </select>
 
-            <input type="text" name="buscar" placeholder="Buscar producto..." class="search-input" value="<?php echo htmlspecialchars($buscar); ?>">
-
-            <button type="submit" class="search-button">
-                <img src="../imagenes/quelepasaalupita.png" alt="Buscar" class="lupa-icono">
-            </button>
-        </form>
-    </div>
+      <div style="display: flex; align-items: center; flex: 1; min-width: 250px;">
+        <input type="text" name="buscar" placeholder="Buscar producto..." class="search-input" style="border-radius: 30px 0 0 30px; border-right: none;">
+        
+        <button type="submit" class="search-button" style="border-radius: 0 30px 30px 0; width: 50px; height: 42px; display: flex; align-items: center; justify-content: center;">
+          <img src="../imagenes/quelepasaalupita.png" alt="Buscar" class="lupa-icono">
+        </button>
+      </div>
+    </form>
+  </div>
 </section>
 
 <div class="container">

@@ -2132,3 +2132,55 @@ body:has(.header) .hero-content p {
         height: 38px;
     }
 }
+
+/* Estilo para el buscador con botón al lado */
+.search-container form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.search-input-group {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 250px;
+}
+
+.search-input {
+    border-radius: 30px 0 0 30px !important;
+    border-right: none !important;
+}
+
+.search-button {
+    border-radius: 0 30px 30px 0 !important;
+    width: 50px !important;
+    height: 42px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Para móviles */
+@media (max-width: 768px) {
+    .search-container form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .search-input-group {
+        width: 100%;
+    }
+    
+    .search-input {
+        border-radius: 30px !important;
+        border-right: 1px solid #ccc !important;
+    }
+    
+    .search-button {
+        border-radius: 30px !important;
+        margin-left: 10px;
+    }
+}
