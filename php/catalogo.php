@@ -34,130 +34,146 @@ $result = $stmt->get_result();
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Catálogo | El pistachón</title>
-  <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo | El pistachón</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-    <header class="header">
-        <div class="nav-container container">
-          <a href="../html/index.html">
-                <img src="../imagenes/logo_pistachon.png" alt="El Pistachón" class="logo-img">
-            </a>
-            <input type="checkbox" id="menu-toggle">
-            <label for="menu-toggle">
-                <img src="../imagenes/menu_ico.png" class="menu-icon" alt="Menú">
-            </label>
-            <nav class="navbar">
-                <ul>
-                    <li><a href="../html/index.html">Inicio</a></li>
-                    <li><a href="catalogo.php">Catálogo</a></li>
-                    <li><a href="../html/acerca_de.html">Acerca de</a></li>
-                    <li><a href="login.php">Iniciar Sesión</a></li>
-                </ul>
-            </nav>
-        </div>
+<header class="header">
+    <div class="nav-container container">
+        <a href="../html/index.html">
+            <img src="../imagenes/logo_pistachon.png" alt="El Pistachón" class="logo-img">
+        </a>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle">
+            <img src="../imagenes/menu_ico.png" class="menu-icon" alt="Menú">
+        </label>
+        <nav class="navbar">
+            <ul>
+                <li><a href="../html/index.html">Inicio</a></li>
+                <li><a href="catalogo.php">Catálogo</a></li>
+                <li><a href="../html/acerca_de.html">Acerca de</a></li>
+                <li><a href="login.php">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </div>
 
-        <div class="hero-content container">
-            <h1>Catálogo</h1>
-            <p>
-                Explora nuestra amplia variedad de productos y encuentra lo que necesitas para tu hogar o negocio.
-            </p>
-        </div>
-
-    </header>
+    <div class="hero-content container">
+        <h1>Catálogo</h1>
+        <p>
+            Explora nuestra amplia variedad de productos y encuentra lo que necesitas para tu hogar o negocio.
+        </p>
+    </div>
+</header>
 
 <section class="search-section">
-  <div class="search-container">
-    <form method="GET" action="catalogo.php" style="display:flex; flex-wrap:wrap; align-items:center; gap:8px;">
-      <select name="categoria" class="category-select" style="padding:8px;">
-        <option value="">Todas las categorías</option>
-        <option value="chiles">Chiles</option>
-        <option value="especias">Especias</option>
-        <option value="semillas">Semillas</option>
-        <option value="dulces">Dulces</option>
-        <option value="frutas-secas">Frutas Secas</option>
-        <option value="otros">Otros</option>
-      </select>
+    <div class="search-container">
+        <form method="GET" action="catalogo.php">
+            <select name="categoria" class="category-select">
+                <option value="">Todas las categorías</option>
+                <option value="chiles" <?php echo ($categoria == 'chiles') ? 'selected' : ''; ?>>Chiles</option>
+                <option value="especias" <?php echo ($categoria == 'especias') ? 'selected' : ''; ?>>Especias</option>
+                <option value="semillas" <?php echo ($categoria == 'semillas') ? 'selected' : ''; ?>>Semillas</option>
+                <option value="dulces" <?php echo ($categoria == 'dulces') ? 'selected' : ''; ?>>Dulces</option>
+                <option value="frutas-secas" <?php echo ($categoria == 'frutas-secas') ? 'selected' : ''; ?>>Frutas Secas</option>
+                <option value="otros" <?php echo ($categoria == 'otros') ? 'selected' : ''; ?>>Otros</option>
+            </select>
 
-      <input type="text" name="buscar" placeholder="Buscar producto..." class="search-input" style="padding:8px; flex:1; min-width:180px;">
+            <input type="text" name="buscar" placeholder="Buscar producto..." class="search-input" value="<?php echo htmlspecialchars($buscar); ?>">
 
-      <button type="submit" class="search-button" style="padding:8px 10px; display:inline-flex; align-items:center; justify-content:center;">
-        <img src="../imagenes/quelepasaalupita.png" alt="Buscar" class="lupa-icono" style="width:20px; height:20px;">
-      </button>
-    </form>
-  </div>
+            <button type="submit" class="search-button">
+                <img src="../imagenes/quelepasaalupita.png" alt="Buscar" class="lupa-icono">
+            </button>
+        </form>
+    </div>
 </section>
 
-<div class="catalog-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 32px;">
- <?php while ($row = $result->fetch_assoc()): ?>
-    <div>
-      <div class="catalog-info" style="background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.12); border-radius: 12px; padding: 12px; margin-top: 8px; padding-top: 25px; justify-content: center; align-items: center;">
-
-        <!-- Imagen con función para abrir modal -->
-        <img 
-          src="../imagenes/<?php echo htmlspecialchars($row['foto']); ?>" 
-          alt="<?php echo htmlspecialchars($row['nombre']); ?>" 
-          class="catalog-img"
-          onclick="openModal(this)"
-        >
-
-        <h4><?php echo htmlspecialchars($row['nombre']); ?></h4>
-        <p><?php echo htmlspecialchars($row['descripcion']); ?></p>
-        <span>Precio: $<?php echo htmlspecialchars($row['precio']); ?></span>
-      </div>
+<div class="container">
+    <div class="catalog-grid">
+        <?php if ($result->num_rows > 0): ?>
+            <?php while ($row = $result->fetch_assoc()): ?>
+                <div class="catalog-card">
+                    <div class="catalog-info">
+                        <img 
+                            src="../imagenes/<?php echo htmlspecialchars($row['foto']); ?>" 
+                            alt="<?php echo htmlspecialchars($row['nombre']); ?>" 
+                            class="catalog-img"
+                            onclick="openModal(this)"
+                        >
+                        <h4><?php echo htmlspecialchars($row['nombre']); ?></h4>
+                        <p><?php echo htmlspecialchars($row['descripcion']); ?></p>
+                        <span class="price">$<?php echo htmlspecialchars($row['precio']); ?></span>
+                    </div>
+                </div>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <div class="no-results">
+                <p>No se encontraron productos con los filtros seleccionados.</p>
+            </div>
+        <?php endif; ?>
     </div>
-<?php endwhile; ?>
 </div>
 
 <footer class="footer">
-        <div class="footer-content container">
-            <div class="footer-section">
-                <h3>Sobre Nosotros</h3>
-                <ul>
-                    <li><a href="../html/acerca_de.html">Historia</a></li>
-                    <li><a href="../html/acerca_de.html">Localización</a></li>
-                    <li><a href="../html/acerca_de.html">Redes sociales</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Atención al cliente</h3>
-                <ul>
-                <li><a href="https://wa.me/526461285183">Tel: 646-128-5183</a></li>
-                </ul>
-            </div>
+    <div class="footer-content container">
+        <div class="footer-section">
+            <h3>Sobre Nosotros</h3>
+            <ul>
+                <li><a href="../html/acerca_de.html">Historia</a></li>
+                <li><a href="../html/acerca_de.html">Localización</a></li>
+                <li><a href="../html/acerca_de.html">Redes sociales</a></li>
+            </ul>
         </div>
-    </footer>
+        <div class="footer-section">
+            <h3>Atención al cliente</h3>
+            <ul>
+                <li><a href="https://wa.me/526461285183">Tel: 646-128-5183</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
 <!-- Modal para ampliar imagen -->
-<div id="imgModal" class="modal" onclick="closeModal()">
-  <span class="close" onclick="closeModal(); event.stopPropagation();">&times;</span>
-  <!-- evita que el clic en la imagen cierre el modal -->
-  <img class="modal-content" id="modalImg" onclick="event.stopPropagation();">
+<div id="imgModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg" onclick="event.stopPropagation();">
 </div>
 
 <script>
 function openModal(img) {
-  const modal = document.getElementById("imgModal");
-  const modalImg = document.getElementById("modalImg");
-
-  modal.style.display = "flex"; // <-- usar flex para aplicar centrado
-  modalImg.src = img.src;
-  // asegura que el foco vaya al modal (opcional, mejora accesibilidad)
-  modal.setAttribute('aria-hidden', 'false');
+    const modal = document.getElementById("imgModal");
+    const modalImg = document.getElementById("modalImg");
+    
+    modal.style.display = "flex";
+    modalImg.src = img.src;
+    modalImg.alt = img.alt;
+    
+    // Deshabilitar scroll del body
+    document.body.style.overflow = "hidden";
 }
 
 function closeModal() {
-  const modal = document.getElementById("imgModal");
-  modal.style.display = "none";
-  modal.setAttribute('aria-hidden', 'true');
+    const modal = document.getElementById("imgModal");
+    modal.style.display = "none";
+    
+    // Habilitar scroll del body
+    document.body.style.overflow = "auto";
 }
 
-// cerrar con Esc
+// Cerrar modal al hacer clic fuera de la imagen
+document.getElementById('imgModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
+});
+
+// Cerrar con tecla Escape
 document.addEventListener('keydown', function(e) {
-  if (e.key === "Escape") closeModal();
+    if (e.key === "Escape") {
+        closeModal();
+    }
 });
 </script>
 
