@@ -13,15 +13,15 @@
 
   <header style="background-color:#f5f5f5; padding:10px 0; border-bottom:1px solid #ccc;">
     <div style="display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; padding:0 40px;">
-    <a href="../html/index.html">
+    <a href="../index.html">
                 <img src="../imagenes/logo_pistachon.png" alt="El Pistachón" class="logo-img">
             </a>
       
       <nav>
         <ul style="list-style:none; display:flex; gap:40px; margin:0; padding:0;">
-          <li><a href="../html/index.html" style="text-decoration:none; color:#333; font-weight:500;">Inicio</a></li>
+          <li><a href="../index.html" style="text-decoration:none; color:#333; font-weight:500;">Inicio</a></li>
           <li><a href="catalogo.php" style="text-decoration:none; color:#333; font-weight:500;">Catálogo</a></li>
-          <li><a href="../html/acerca_de.html" style="text-decoration:none; color:#333; font-weight:500;">Acerca de</a></li>
+          <li><a href="../acerca_de.html" style="text-decoration:none; color:#333; font-weight:500;">Acerca de</a></li>
           <li><a href="register.php" style="text-decoration:none; color:#333; font-weight:500;">Registrarse</a></li>
         </ul>
       </nav>

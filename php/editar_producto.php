@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <header class="header">
     <div class="nav-container container">
-        <a href="../html/index.html">
+        <a href="../index.html">
             <img src="../imagenes/logo_pistachon.png" alt="El Pistachón" class="logo-img">
         </a>
         <input type="checkbox" id="menu-toggle">
