@@ -1,8 +1,8 @@
 <?php
-$servername = "sql204.infinityfree.com";   // o la IP de tu servidor
-$username   = "if0_40269598";        // tu usuario de MariaDB
-$password   = "Xk0rpi025";            // tu contraseña de MariaDB
-$dbname     = "if0_40269598_tienda_db";   // la base de datos que creamos
+$servername = "192.168.1.236";   // o la IP de tu servidor
+$username   = "root";        // tu usuario de MariaDB
+$password   = "mariana";            // tu contraseña de MariaDB
+$dbname     = "tienda_db";   // la base de datos que creamos
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
