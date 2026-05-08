@@ -1,7 +1,6 @@
 <?php
 include 'conexion.php';
 
-// Filtros de búsqueda
 $categoria = $_GET['categoria'] ?? '';
 $buscar = $_GET['buscar'] ?? '';
 
@@ -9,14 +8,12 @@ $sql = "SELECT * FROM productos WHERE 1=1";
 $params = [];
 $types = "";
 
-// Filtrar por categoría
 if (!empty($categoria)) {
     $sql .= " AND categoria = ?";
     $params[] = $categoria;
     $types .= "s";
 }
 
-// Filtrar por búsqueda en nombre o descripción
 if (!empty($buscar)) {
     $sql .= " AND (nombre LIKE ? OR descripcion LIKE ?)";
     $params[] = "%$buscar%";
@@ -41,6 +38,8 @@ $result = $stmt->get_result();
 </head>
 <body>
 
+<div class="toast" id="toast">Se ha añadido exitosamente a Mi Apartado</div>
+
 <header class="header">
     <div class="nav-container container">
         <a href="../index.html">
@@ -55,6 +54,7 @@ $result = $stmt->get_result();
                 <li><a href="../index.html">Inicio</a></li>
                 <li><a href="catalogo.php">Catálogo</a></li>
                 <li><a href="../acerca_de.html">Acerca de</a></li>
+                <li><a href="apartado.php">Mi Apartado</a></li>
                 <li><a href="login.php">Iniciar Sesión</a></li>
             </ul>
         </nav>
@@ -83,7 +83,6 @@ $result = $stmt->get_result();
 
       <div style="display: flex; align-items: center; flex: 1; min-width: 250px;">
         <input type="text" name="buscar" placeholder="Buscar producto..." class="search-input" style="border-radius: 30px 0 0 30px; border-right: none;">
-        
         <button type="submit" class="search-button" style="border-radius: 0 30px 30px 0; width: 50px; height: 42px; display: flex; align-items: center; justify-content: center;">
           <img src="../imagenes/quelepasaalupita.png" alt="Buscar" class="lupa-icono">
         </button>
@@ -106,7 +105,22 @@ $result = $stmt->get_result();
                         >
                         <h4><?php echo htmlspecialchars($row['nombre']); ?></h4>
                         <p><?php echo htmlspecialchars($row['descripcion']); ?></p>
-                        <span class="price">$<?php echo htmlspecialchars($row['precio']); ?></span>
+                        <div style="display:flex; align-items:center; justify-content:space-between; margin-top:8px;">
+                            <span class="price">$<?php echo htmlspecialchars($row['precio']); ?></span>
+                            <button 
+                                class="btn-carrito"
+                                onclick="agregarApartado(
+                                    '<?php echo htmlspecialchars($row['id']); ?>',
+                                    '<?php echo htmlspecialchars($row['nombre']); ?>',
+                                    '<?php echo htmlspecialchars($row['categoria']); ?>',
+                                    '<?php echo htmlspecialchars($row['descripcion']); ?>',
+                                    <?php echo $row['precio']; ?>,
+                                    '<?php echo htmlspecialchars($row['foto']); ?>'
+                                )"
+                            >
+                                <img src="../imagenes/carrito_ico.png" alt="Agregar" style="width:22px; height:22px;">
+                            </button>
+                        </div>
                     </div>
                 </div>
             <?php endwhile; ?>
@@ -144,38 +158,44 @@ $result = $stmt->get_result();
 </div>
 
 <script>
+function agregarApartado(id, nombre, categoria, descripcion, precio, foto) {
+    let apartado = JSON.parse(localStorage.getItem('apartado')) || [];
+
+    let existente = apartado.find(p => p.id === id);
+    if (existente) {
+        existente.cantidad += 1;
+    } else {
+        apartado.push({ id, nombre, categoria, descripcion, precio, foto, cantidad: 1 });
+    }
+
+    localStorage.setItem('apartado', JSON.stringify(apartado));
+
+    const toast = document.getElementById('toast');
+    toast.style.display = 'block';
+    setTimeout(() => toast.style.display = 'none', 2500);
+}
+
 function openModal(img) {
     const modal = document.getElementById("imgModal");
     const modalImg = document.getElementById("modalImg");
-    
     modal.style.display = "flex";
     modalImg.src = img.src;
     modalImg.alt = img.alt;
-    
-    // Deshabilitar scroll del body
     document.body.style.overflow = "hidden";
 }
 
 function closeModal() {
     const modal = document.getElementById("imgModal");
     modal.style.display = "none";
-    
-    // Habilitar scroll del body
     document.body.style.overflow = "auto";
 }
 
-// Cerrar modal al hacer clic fuera de la imagen
 document.getElementById('imgModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-        closeModal();
-    }
+    if (e.target === this) closeModal();
 });
 
-// Cerrar con tecla Escape
 document.addEventListener('keydown', function(e) {
-    if (e.key === "Escape") {
-        closeModal();
-    }
+    if (e.key === "Escape") closeModal();
 });
 </script>
 
