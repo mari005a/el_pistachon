@@ -1,17 +1,445 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../img/logo.png" type="image/x-icon">
     <title>Inicio | El pistachón</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+h2 {
+    font-size: 55px;
+    line-height: 70px;
+    color: #323337;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    color: #414247;
+    margin: 25px 0 45px 0;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #24c21f;
+    color: #fffdfc;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 14px;
+    margin-bottom: 30px;
+    margin-top: 1px;
+}
+
+.btn-primary:hover {
+    background-color: #3eb43a;
+    transform: translateY(-2px);
+}
+
+/* ===== HEADER Y NAVEGACIÓN ===== */
+.header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../imagenes/adentro.jpg);
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/* Nav dentro del header: transparente, posición absoluta */
+.nav-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px 0;
+    z-index: 1000;
+    background-color: transparent;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+}
+
+/* Cuando se le agrega la clase .scrolled desde JS */
+.nav-container.scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #24c21f;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    padding: 10px 0;
+}
+
+.nav-container.scrolled .logo-img {
+    height: 55px !important;
+}
+
+.logo-img {
+    height: 150px;
+    width: auto;
+    max-width: 200px;
+    transition: height 0.3s ease, transform 0.3s ease;
+    display: block;
+}
+
+.logo-img:hover {
+    transform: scale(1.1);
+}
+
+#menu-toggle { display: none; }
+
+.menu-icon {
+    width: 25px;
+    filter: brightness(0) invert(1);
+}
+
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+}
+
+.nav-container label {
+    cursor: pointer;
+    display: none;
+    z-index: 1002;
+}
+
+.navbar ul { display: flex; gap: 10px; }
+.navbar ul li { position: relative; }
+
+.navbar ul li a {
+    font-size: 18px;
+    padding: 10px 20px;
+    color: #fffdfc;
+    display: block;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover { color: #24c21f; }
+
+.nav-container.scrolled .navbar ul li a:hover { color: #323337; }
+
+.hero-content {
+    text-align: center;
+    width: 100%;
+    padding: 0 15px;
+    padding-bottom: 25px;
+    margin-top: 40px;
+}
+
+.hero-content h1 {
+    font-size: 75px;
+    line-height: 80px;
+    color: #f9fafc;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    margin-top: 50px;
+}
+
+.hero-content p {
+    font-size: 16px;
+    color: #c5c5c5;
+    margin-bottom: 25px;
+    padding-bottom: 45px;
+}
+
+/* ===== SECCIÓN PRODUCTOS ===== */
+.products-section {
+    padding: 110px 0;
+    padding-bottom: 25px;
+    background-color: #e1e2e6;
+    position: relative;
+    overflow: hidden;
+}
+
+.products-section::before {
+    content: "";
+    position: absolute;
+    top: 0; right: 0;
+    width: 340px; height: 190px;
+    background-image: url(../imagenes/pistaches_dispersos.png);
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: contain;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+.products-section::after {
+    content: "";
+    position: absolute;
+    top: 0; left: -100px;
+    width: 340px; height: 190px;
+    background-image: url(../imagenes/pistaches_dispersos.png);
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: contain;
+    opacity: 0.7;
+    z-index: 1;
+    transform: scaleX(-1);
+}
+
+.products-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.products-content h2 {
+    font-size: 55px;
+    line-height: 70px;
+    color: #323337;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.section-description {
+    font-size: 16px;
+    color: #414247;
+    margin-bottom: 35px;
+}
+
+.products-grid {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.product-card {
+    padding: 15px;
+    flex: 0 1 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.product-card img {
+    width: 100%;
+    max-width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.product-card h3 { color: #323337; font-size: 20px; margin-bottom: 15px; }
+
+/* ===== IDENTIDAD ===== */
+.identity-section {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../imagenes/dentro.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 80px 0;
+}
+
+.identity-content { text-align: center; }
+
+.identity-content h2 {
+    font-size: 55px;
+    line-height: 70px;
+    color: #f9fafc;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+}
+
+.identity-content p { font-size: 16px; color: #c5c5c5; margin-bottom: 50px; }
+
+.identity-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.identity-item { padding: 0 20px; flex: 1; min-width: 200px; margin-bottom: 30px; }
+.identity-item img { width: 25px; margin-bottom: 15px; }
+.identity-item h3 { color: #3eb43a; font-size: 18px; }
+
+/* ===== DESTACADAS ===== */
+.featured-section { display: flex; flex-wrap: wrap; position: relative; }
+
+.featured-content {
+    width: 50%;
+    padding: 80px;
+    background-color: #e1e2e6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.featured-content .btn-primary {
+    padding: 8px 20px;
+    font-size: 13px;
+    align-self: flex-start;
+    margin-top: 10px;
+}
+
+.featured-image {
+    width: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#image-1 { background-image: url('../imagenes/pistaches.jpg'); }
+#image-2 { background-image: url('../imagenes/chilecalifornia.webp'); }
+
+.flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.55);
+    color: white;
+    border: none;
+    font-size: 30px;
+    padding: 6px 14px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 8px;
+}
+
+.flecha-der { right: 10px; }
+.flecha-izq { left: 10px; }
+
+/* ===== TEMPORADA ===== */
+.seasonal-products { padding: 80px 0; text-align: center; }
+
+.seasonal-grid { display: flex; justify-content: space-between; flex-wrap: wrap; }
+
+.seasonal-card { padding: 15px; flex: 1; min-width: 300px; }
+
+.seasonal-card img {
+    width: 300px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.seasonal-card h3 { font-size: 25px; color: #323337; margin-bottom: 10px; }
+
+/* ===== FOOTER ===== */
+.footer { padding: 80px 0; background-color: #000000; }
+
+.footer-content { display: flex; justify-content: center; flex-wrap: wrap; gap: 100px; }
+
+.footer-section { flex: 0 1 auto; min-width: 200px; margin-bottom: 30px; }
+
+.footer-section h3 { font-size: 18px; color: #f9fafc; margin-bottom: 20px; }
+
+.footer-section a { font-size: 16px; color: #c5c5c5; display: block; margin-bottom: 10px; transition: color 0.3s ease; }
+
+.footer-section a:hover { color: #3eb43a; }
+
+/* ===== RESPONSIVIDAD ===== */
+@media (max-width: 991px) {
+    .nav-container label { display: block; }
+    .logo-img { height: 80px !important; max-width: 180px !important; }
+    .navbar {
+        position: fixed;
+        top: 0; left: -100%;
+        width: 280px; height: 100vh;
+        background-color: #1e9e1a;
+        transition: left 0.3s ease;
+        z-index: 1001;
+        padding-top: 80px;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+    }
+    #menu-toggle:checked ~ .navbar { left: 0; }
+    #menu-toggle:checked ~ .menu-overlay { display: block; }
+    .navbar ul { flex-direction: column; gap: 0; }
+    .navbar ul li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.2); }
+    .navbar ul li a { padding: 18px 25px; font-size: 16px; }
+    .hero-content h1 { font-size: 48px; line-height: 52px; }
+    .featured-section { flex-direction: column; }
+    .featured-content, .featured-image { width: 100%; }
+    .featured-content { padding: 50px 30px; order: 2; }
+    .featured-image { height: 350px; order: 1; }
+    .seasonal-grid { justify-content: center; gap: 30px; }
+    .seasonal-card { flex: 0 1 calc(50% - 30px); min-width: 280px; }
+    .footer-content { gap: 50px; }
+    .footer-section { flex: 0 1 45%; }
+}
+
+@media (max-width: 768px) {
+    .logo-img { height: 70px !important; }
+    .nav-container.scrolled .logo-img { height: 45px !important; }
+    .header { min-height: 60vh; }
+    .hero-content h1 { font-size: 45px; line-height: 50px; }
+    .identity-grid { flex-direction: column; }
+    .identity-section { padding: 50px 15px; background-attachment: scroll; }
+    .featured-section { flex-direction: column; }
+    .featured-content { width: 100%; padding: 50px 30px; text-align: center; }
+    .featured-content .btn-primary { align-self: center; }
+    .featured-image { width: 100%; height: 300px; }
+    .seasonal-grid { flex-direction: column; }
+    .footer-content { flex-direction: column; text-align: center; gap: 40px; }
+    .footer-section:last-child { margin-left: 0; text-align: center; }
+}
+
+@media (max-width: 575px) {
+    .logo-img { height: 60px !important; }
+    .nav-container.scrolled .logo-img { height: 40px !important; }
+    .header { min-height: 85vh; }
+    .hero-content h1 { font-size: 32px; line-height: 36px; }
+    .products-section::before, .products-section::after { display: none; }
+}
+
+@media (min-width: 769px) {
+    .footer-content { justify-content: space-around; }
+    .footer-section:last-child { margin-left: auto; text-align: right; }
+}
+    </style>
 </head>
 
 <body>
+
+    <!-- HEADER CON NAV INTEGRADO -->
     <header class="header">
-        <div class="nav-container container">
+        <div class="nav-container" id="navbar"><div class="nav-inner container" style="display:flex;align-items:center;justify-content:space-between;width:100%;gap:30px;">
             <a href="index.html">
                 <img src="../imagenes/logo_pistachon.png" alt="El Pistachón" class="logo-img">
             </a>
@@ -19,6 +447,7 @@
             <label for="menu-toggle">
                 <img src="../imagenes/menu_ico.png" class="menu-icon" alt="Menú">
             </label>
+            <div class="menu-overlay"></div>
             <nav class="navbar">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
@@ -28,20 +457,21 @@
                     <li><a href="../php/login.php">Iniciar Sesión</a></li>
                 </ul>
             </nav>
+            </div>
         </div>
 
         <div class="hero-content container">
             <h1>El pistachón</h1>
             <p>
-                ¡Bienvenidos a nuestra tienda!</br>
-           
-                En este sitio web encontrarás todo lo que necesitas saber sobre nuestros productos: desde los distintos tipos de chile que ofrecemos, hasta productos de temporada. 
+                ¡Bienvenidos a nuestra tienda!<br>
+                En este sitio web encontrarás todo lo que necesitas saber sobre nuestros productos: desde los distintos tipos de chile que ofrecemos, hasta productos de temporada.
                 También te invitamos a conocer la historia que dio origen a este proyecto. ¡Gracias por visitarnos!
             </p>
             <a href="../php/catalogo.php" class="btn-primary">INFORMACIÓN</a>
         </div>
     </header>
 
+    <!-- PRODUCTOS -->
     <section class="products-section">
         <div class="products-content container">
             <h2>Diferentes tipos de productos</h2>
@@ -50,31 +480,26 @@
             </p>
             <div class="products-grid">
                 <div class="product-card">
-                    <img src="../imagenes/semillas_girasol.png" alt="Semillas de girasol" width="800" height="120">
+                    <img src="../imagenes/semillas_girasol.png" alt="Semillas de girasol">
                     <h3>Semillas</h3>
-                    <p>
-                        Ofrecemos semillas como de pistaches, girasol y calabaza. Disponibles en presentaciones para consumo directo o venta al mayoreo.
-                    </p>
+                    <p>Ofrecemos semillas como de pistaches, girasol y calabaza. Disponibles en presentaciones para consumo directo o venta al mayoreo.</p>
                 </div>
                 <div class="product-card">
-                    <img src="../imagenes/chile_arbol.png" alt="Chile de árbol" width="800" height="120">
+                    <img src="../imagenes/chile_arbol.png" alt="Chile de árbol">
                     <h3>Chiles</h3>
-                    <p>
-                        Contamos con variedades secas, desde chiles suaves hasta picantes como el chile california y chile de árbol. Ideales para salsas, para conservación o uso en comidas.
-                    </p>
+                    <p>Contamos con variedades secas, desde chiles suaves hasta picantes como el chile california y chile de árbol. Ideales para salsas, para conservación o uso en comidas.</p>
                 </div>
                 <div class="product-card">
-                    <img src="../imagenes/pimienta_entera.png" alt="Pimienta" width="800" height="120">
+                    <img src="../imagenes/pimienta_entera.png" alt="Pimienta">
                     <h3>Especias</h3>
-                    <p>
-                        Nuestra selección incluye pimientas, comino y orégano. Perfectas para realzar sabores en platillos.
-                    </p>
+                    <p>Nuestra selección incluye pimientas, comino y orégano. Perfectas para realzar sabores en platillos.</p>
                 </div>
             </div>
             <a href="../php/catalogo.php" class="btn-primary">INFORMACIÓN</a>
         </div>
     </section>
 
+    <!-- IDENTIDAD -->
     <main class="identity-section">
         <div class="identity-content container">
             <h2>Nuestra identidad</h2>
@@ -92,72 +517,60 @@
                     <h3>Valores</h3>
                 </div>
             </div>
-            <p>
-                Nos dedicamos a ofrecer productos de calidad apoyando a productores locales. Buscamos ser un referente en sabor y confianza, guiados por la integridad, la calidad y la cercanía con nuestros clientes.
-            </p>
+            <p>Nos dedicamos a ofrecer productos de calidad apoyando a productores locales. Buscamos ser un referente en sabor y confianza, guiados por la integridad, la calidad y la cercanía con nuestros clientes.</p>
             <a href="acerca_de.html" class="btn-primary">INFORMACIÓN</a>
         </div>
     </main>
 
+    <!-- CARRUSEL 1 -->
     <section class="featured-section" id="carrusel-uno">
-    <button class="flecha flecha-der" data-carrusel="1">❯</button>
-    
-    <div class="featured-content" id="content-1">
-        <h2>Pistaches</h2>
-        <p>
-            Nuestros Pistaches son seleccionados cuidadosamente para garantizar la calidad del producto. Disponibles en diferentes presentaciones para consumo directo, regalos o uso en repostería.
-        </p>
-        <a href="../php/catalogo.php" class="btn-primary">INFORMACIÓN</a>
-    </div>
-
-    <div class="featured-image" id="image-1"></div>
+        <button class="flecha flecha-der" data-carrusel="1">❯</button>
+        <div class="featured-content" id="content-1">
+            <h2>Pistaches</h2>
+            <p>Nuestros Pistaches son seleccionados cuidadosamente para garantizar la calidad del producto. Disponibles en diferentes presentaciones para consumo directo, regalos o uso en repostería.</p>
+            <a href="../php/catalogo.php" class="btn-primary">INFORMACIÓN</a>
+        </div>
+        <div class="featured-image" id="image-1"></div>
     </section>
 
+    <!-- CARRUSEL 2 -->
     <section class="featured-section" id="carrusel-dos">
-    <button class="flecha flecha-izq" data-carrusel="2">❮</button>
-
-    <div class="featured-image" id="image-2"></div>
-
-    <div class="featured-content" id="content-2">
-        <h2>Chile California</h2>
-        <p>
-            El Chile California que ofrecemos se caracteriza por su tamaño y buen sabor, ideal para salsas y guisos tradicionales. 
-        </p>
-        <a href="../php/catalogo.php" class="btn-primary">INFORMACIÓN</a>
-    </div>
+        <button class="flecha flecha-izq" data-carrusel="2">❮</button>
+        <div class="featured-image" id="image-2"></div>
+        <div class="featured-content" id="content-2">
+            <h2>Chile California</h2>
+            <p>El Chile California que ofrecemos se caracteriza por su tamaño y buen sabor, ideal para salsas y guisos tradicionales.</p>
+            <a href="../php/catalogo.php" class="btn-primary">INFORMACIÓN</a>
+        </div>
     </section>
 
+    <!-- TEMPORADA -->
     <section class="seasonal-products container">
         <h2>Productos de Temporada</h2>
         <p>Consulta nuestros productos de temporada: paquetes promocionales, descuentos por volumen y productos estacionales.</p>
-
         <div class="seasonal-grid">
             <div class="seasonal-card">
-                <img src="../imagenes/piñatas.jpg" alt="Piñatas">
+                <img src="../imagenes/piñatas.jpg" alt="Piñatas">
                 <h3>Piñatas</h3>
-                <p>
-                    Para celebraciones de navidad y año nuevo.
-                </p>
+                <p>Para celebraciones de navidad y año nuevo.</p>
             </div>
             <div class="seasonal-card">
                 <img src="../imagenes/colacion.jpg" alt="Colación">
                 <h3>Colación</h3>
-                <p>
-                    Para disfrutar en esta navidad.
-                </p>
+                <p>Para disfrutar en esta navidad.</p>
             </div>
             <div class="seasonal-card">
                 <img src="../imagenes/calendario_pistachon.png" alt="Calendarios">
                 <h3>Calendarios</h3>
-                <p>
-                    Exclusivos para clientes frecuentes.
-                </p>
+                <p>Exclusivos para clientes frecuentes.</p>
             </div>
         </div>
         <a href="../php/catalogo.php" class="btn-primary">INFORMACIÓN</a>
     </section>
+
     <script src="../js/carrusel.js"></script>
-    
+
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-content container">
             <div class="footer-section">
@@ -176,7 +589,21 @@
             </div>
         </div>
     </footer>
-    <script src="../js/carrusel"></script>
+
+    <!-- SCROLL SCRIPT -->
+    <script>
+        const navbar = document.getElementById('navbar');
+        const header = document.querySelector('.header');
+
+        window.addEventListener('scroll', () => {
+            const headerHeight = header.offsetHeight;
+            if (window.scrollY > headerHeight * 0.6) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
 
 </body>
 </html>
